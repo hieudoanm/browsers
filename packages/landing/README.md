@@ -9,7 +9,7 @@ export deployed to GitHub Pages.
 src/app/             # routes: / (marketing), /docs, /docs/[slug]
 src/components/      # shared UI (molecules are shared across hieudoanm landings)
 src/lib/             # site constants + markdown doc loading (md/docs/)
-md/docs/             # documentation source (markdown + front matter)
+md/docs/             # documentation source, grouped <group>/<chapter>.md
 public/              # favicon, logo, og.png, robots, sitemap, humans
 ```
 

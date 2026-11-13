@@ -21,11 +21,11 @@ diagnostics go to stderr so they can never corrupt the protocol stream.
 
 ## Tools
 
-| Tool                        | Arguments                    | Result                                                              |
-| --------------------------- | ---------------------------- | ------------------------------------------------------------------- |
-| `browserverless_scrape`     | `url`, optional `timeout_ms` | Text block: final URL, title, full HTML, request cost               |
-| `browserverless_screenshot` | `url`, optional `timeout_ms` | Text summary + base64 `image/png` content block                     |
-| `browserverless_version`    | none                         | Server name and crate version                                       |
+| Tool                        | Arguments                    | Result                                                |
+| --------------------------- | ---------------------------- | ----------------------------------------------------- |
+| `browserverless_scrape`     | `url`, optional `timeout_ms` | Text block: final URL, title, full HTML, request cost |
+| `browserverless_screenshot` | `url`, optional `timeout_ms` | Text summary + base64 `image/png` content block       |
+| `browserverless_version`    | none                         | Server name and crate version                         |
 
 `timeout_ms` overrides `--timeout` for that call; `0` means "use the server
 default". Missing `url`, negative/oversized `timeout_ms`, and non-`http(s)`

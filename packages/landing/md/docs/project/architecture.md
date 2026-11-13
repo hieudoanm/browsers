@@ -46,11 +46,11 @@ thin embedder shell.
 
 ## Crate Responsibilities
 
-| Crate              | Responsibility                                                                                                              |
-| ------------------ | --------------------------------------------------------------------------------------------------------------------------- |
-| `browsers-core`    | Owns the Servo boundary: `BrowserContext`, `Page`, `PageDelegate`, rendering setup. Knows nothing about terminals or HTTP.  |
-| `browsers-headless`| Owns offscreen execution: `HeadlessBrowser`, `HeadlessConfig`, wait-for-load/render, `screenshot_url`. Calls `browsers-core` only. |
-| `browsers-cli`     | Owns command parsing (clap), the HTTP server, and the MCP server. Bin name is `browserverless`; compile package is `browsers-cli`. |
+| Crate               | Responsibility                                                                                                                     |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `browsers-core`     | Owns the Servo boundary: `BrowserContext`, `Page`, `PageDelegate`, rendering setup. Knows nothing about terminals or HTTP.         |
+| `browsers-headless` | Owns offscreen execution: `HeadlessBrowser`, `HeadlessConfig`, wait-for-load/render, `screenshot_url`. Calls `browsers-core` only. |
+| `browsers-cli`      | Owns command parsing (clap), the HTTP server, and the MCP server. Bin name is `browserverless`; compile package is `browsers-cli`. |
 
 Dependency direction is strictly downwards:
 `browsers-cli → browsers-headless → browsers-core → servo`.
@@ -471,13 +471,13 @@ These are **verified** rendering results from the current headless pipeline
 
 ### Verified Rendering Targets
 
-| Target                                                             | Result                                                                                                                                                          |
-| ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `crates/browsers-cli/tests/fixtures/rendering/mvp.html` (golden fixture) | Border bbox `x[50..393] y[50..193]` (344×144 = 300 + 2×20 padding + 2×2 border), interior `rgb(211,211,211)`, white wallpaper. Pixel-exact.                |
-| `file:///tmp/<red-or-green>.html` (solid-color bodies)             | Exact background color in surface readback **and** saved PNG.                                                                                                    |
-| `https://example.com/`                                             | `#eeeeee` background, dark text, 134 distinct sampled colors — real page.                                                                                        |
-| `https://en.wikipedia.org/wiki/Philosophy`                         | White article bg, `#f8f9fa` sidebar, `(32,33,34)` text, `#3366cc` link blue, ~8199 distinct sampled colors. No TLS/cert errors.                                  |
-| `https://www.instagram.com/p/Db-W3jykdhs/`                         | Renders the logged-out post page (dark `#54575A` backdrop, white login card, Instagram blue `#4a5df9`, ~3400 distinct colors) via the surface-readback fallback. |
+| Target                                                                   | Result                                                                                                                                                           |
+| ------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `crates/browsers-cli/tests/fixtures/rendering/mvp.html` (golden fixture) | Border bbox `x[50..393] y[50..193]` (344×144 = 300 + 2×20 padding + 2×2 border), interior `rgb(211,211,211)`, white wallpaper. Pixel-exact.                      |
+| `file:///tmp/<red-or-green>.html` (solid-color bodies)                   | Exact background color in surface readback **and** saved PNG.                                                                                                    |
+| `https://example.com/`                                                   | `#eeeeee` background, dark text, 134 distinct sampled colors — real page.                                                                                        |
+| `https://en.wikipedia.org/wiki/Philosophy`                               | White article bg, `#f8f9fa` sidebar, `(32,33,34)` text, `#3366cc` link blue, ~8199 distinct sampled colors. No TLS/cert errors.                                  |
+| `https://www.instagram.com/p/Db-W3jykdhs/`                               | Renders the logged-out post page (dark `#54575A` backdrop, white login card, Instagram blue `#4a5df9`, ~3400 distinct colors) via the surface-readback fallback. |
 
 Note: `crates/browsers-cli/tests/fixtures/rendering/mvp.html` requires
 `body { margin: 0 }` for the golden geometry; an 8px body margin (browser

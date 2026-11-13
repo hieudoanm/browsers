@@ -16,14 +16,14 @@ browserverless serve --bind 127.0.0.1:8080
 
 ## Endpoints
 
-| Method | Path                  | Body                        | Response                     |
-| ------ | --------------------- | --------------------------- | ---------------------------- |
-| `GET`  | `/api/v1/health`      | —                           | `200 {"status":"ok"}`        |
-| `GET`  | `/api/v1/version`     | —                           | `200` crate version string   |
-| `GET`  | `/api/v1/openapi.json`| —                           | OpenAPI spec                 |
-| `GET`  | `/docs`               | —                           | Interactive API docs page    |
-| `POST` | `/api/v1/scrape`      | `{"url": "https://..."}`    | `200` full HTML (`text/html`)|
-| `POST` | `/api/v1/screenshot`  | `{"url": "https://..."}`    | `200` PNG (`image/png`)      |
+| Method | Path                   | Body                     | Response                      |
+| ------ | ---------------------- | ------------------------ | ----------------------------- |
+| `GET`  | `/api/v1/health`       | —                        | `200 {"status":"ok"}`         |
+| `GET`  | `/api/v1/version`      | —                        | `200` crate version string    |
+| `GET`  | `/api/v1/openapi.json` | —                        | OpenAPI spec                  |
+| `GET`  | `/docs`                | —                        | Interactive API docs page     |
+| `POST` | `/api/v1/scrape`       | `{"url": "https://..."}` | `200` full HTML (`text/html`) |
+| `POST` | `/api/v1/screenshot`   | `{"url": "https://..."}` | `200` PNG (`image/png`)       |
 
 ### Example
 
@@ -58,13 +58,13 @@ Header values are ASCII-sanitized.
 
 Errors are JSON `{"error":"..."}`:
 
-| Status | Meaning                                            |
-| ------ | -------------------------------------------------- |
+| Status | Meaning                                              |
+| ------ | ---------------------------------------------------- |
 | `400`  | Missing/invalid URL, bad JSON, or non-http(s) scheme |
-| `404`  | Unknown path                                       |
-| `405`  | Non-POST on scrape/screenshot                      |
-| `500`  | Other render failure                               |
-| `504`  | Render timed out                                   |
+| `404`  | Unknown path                                         |
+| `405`  | Non-POST on scrape/screenshot                        |
+| `500`  | Other render failure                                 |
+| `504`  | Render timed out                                     |
 
 Request bodies are capped at 64 KiB. Only `http` and `https` targets are
 accepted — `file`, `data`, `javascript`, and custom schemes are rejected.

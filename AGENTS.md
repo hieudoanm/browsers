@@ -1312,7 +1312,7 @@ Maintain:
 ```text
 README.md
 CONTRIBUTING.md
-packages/landing/md/docs/*.md   # published docs site (architecture, packaging, roadmap, ...)
+packages/landing/md/docs/**/*.md   # published docs site (architecture, packaging, roadmap, ...)
 ```
 
 README should answer:
@@ -1878,7 +1878,7 @@ Use:
 Maintain:
 
 ```text
-packages/landing/md/docs/architecture.md
+packages/landing/md/docs/project/architecture.md
 ```
 
 with explicit known limitations (see §Compatibility).
@@ -2266,7 +2266,7 @@ Application-specific behavior stays in this repository.
 Maintain a record of upstream patches/workarounds in:
 
 ```text
-packages/landing/md/docs/architecture.md
+packages/landing/md/docs/project/architecture.md
 ```
 
 under §Servo Integration Notes and Workarounds.

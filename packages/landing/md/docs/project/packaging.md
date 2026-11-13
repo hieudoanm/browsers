@@ -21,7 +21,7 @@ cargo build --release
 Browserverless is **dynamically linked** against Servo's graphics stack
 (surfman/GL, fontconfig/harfbuzz, GTK/X11/Wayland bits). There is no static
 build; system dependencies must be present at runtime — see
-[Getting started](getting-started) for the package list, and the `Dockerfile`
+[Getting started](/docs/guide/getting-started/) for the package list, and the `Dockerfile`
 for the exact runtime set used in a container.
 
 ## Downloads
@@ -86,12 +86,12 @@ Both serve `GET /api/v1/health` (also used as the image `HEALTHCHECK`).
 
 `.github/workflows/ci.yaml` runs the Rust gates plus a release pipeline:
 
-| Job             | What it does                                                                                                                                                                          |
-| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `cli-check`     | `cargo fmt --check`, `cargo clippy --workspace --all-targets -- -D warnings`, `cargo test` on ubuntu.                                                                              |
-| `cli-build`     | `cargo build --release -p browsers-cli` on ubuntu + macOS (non-PR only); uploads `browserverless-<triple>` artifacts.                                                        |
-| `release`       | On `master`: downloads both artifacts and (re)creates the rolling GitHub Release `latest`.                                                                                            |
-| `landing-*`     | Typecheck/lint/build the Next.js static export and deploy `packages/landing/out` to GitHub Pages.                                                                                    |
+| Job         | What it does                                                                                                          |
+| ----------- | --------------------------------------------------------------------------------------------------------------------- |
+| `cli-check` | `cargo fmt --check`, `cargo clippy --workspace --all-targets -- -D warnings`, `cargo test` on ubuntu.                 |
+| `cli-build` | `cargo build --release -p browsers-cli` on ubuntu + macOS (non-PR only); uploads `browserverless-<triple>` artifacts. |
+| `release`   | On `master`: downloads both artifacts and (re)creates the rolling GitHub Release `latest`.                            |
+| `landing-*` | Typecheck/lint/build the Next.js static export and deploy `packages/landing/out` to GitHub Pages.                     |
 
 The release job force-deletes and recreates the release/tag on every run, so
 the download URLs above always point at the newest build.

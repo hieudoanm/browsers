@@ -28,14 +28,20 @@ pnpm run typecheck
   fork them; pass content via props instead.
 - `src/components/shared/Markdown.tsx` — `react-markdown` + `remark-gfm`
   renderer with prose styling; the only markdown pipeline.
-- `src/lib/docs.ts` — loads `md/docs/*.md` (front matter: `title`,
-  `description`, `order`) into `Doc` records; `getDoc`/`getDocs` are the only
-  accessors — keep markdown parsing out of components.
+- `src/lib/docs.ts` — recursively loads `md/docs/**/*.md` (front matter:
+  `title`, `description`, `order`) into `Doc` records; the slug is the path
+  relative to `md/docs/` without `.md` (e.g. `guide/getting-started`), and the
+  first segment becomes `doc.group` for sidebar grouping. `getDoc`/`getDocs`
+  are the only accessors — keep markdown parsing out of components.
 - `src/lib/site.ts` — repository/site URLs and constants.
 - `src/app/globals.css` — Tailwind v4 imports + the custom DaisyUI
   `browserverless` light theme.
-- `md/docs/` — documentation source. Filename order + `order` front matter
-  control nav order; `index.md` is the docs landing page.
+- `md/docs/` — documentation source, organized as `<group>/<chapter>.md`.
+  Groups: `guide/` (getting-started, cli), `api/` (http-api, mcp),
+  `project/` (architecture, packaging, roadmap). `index.md` at the root is
+  the docs landing page; `order` front matter controls nav order. In-doc
+  links must be absolute (`/docs/<group>/<chapter>/`) — relative links break
+  under nested slugs.
 - `public/` — `favicon.ico`, `favicon.svg`, `logo.svg`, `og.png`, `robots.txt`,
   `sitemap.xml`, `humans.txt`, served under `/browserverless/` in production.
   Canonical sources live in `assets/branding/svg/` — regenerate with

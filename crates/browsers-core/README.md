@@ -23,4 +23,4 @@ about the Servo API. Owns `BrowserContext`, `Page`, `PageDelegate`, and the
   `webview.load()` after build races the constellation (all-white screenshots).
 - One page per context is the supported model; multi-page is unreliable.
 
-See `https://hieudoanm.github.io/browsers/docs/architecture/` §Servo Integration Notes for the full write-up.
+See `https://hieudoanm.github.io/browsers/docs/project/architecture/` §Servo Integration Notes for the full write-up.

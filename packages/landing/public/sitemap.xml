@@ -11,32 +11,37 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hieudoanm.github.io/browsers/docs/getting-started/</loc>
+    <loc>https://hieudoanm.github.io/browsers/docs/guide/getting-started/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://hieudoanm.github.io/browsers/docs/cli/</loc>
+    <loc>https://hieudoanm.github.io/browsers/docs/guide/cli/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://hieudoanm.github.io/browsers/docs/http-api/</loc>
+    <loc>https://hieudoanm.github.io/browsers/docs/api/http-api/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://hieudoanm.github.io/browsers/docs/mcp/</loc>
+    <loc>https://hieudoanm.github.io/browsers/docs/api/mcp/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://hieudoanm.github.io/browsers/docs/architecture/</loc>
+    <loc>https://hieudoanm.github.io/browsers/docs/project/architecture/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://hieudoanm.github.io/browsers/docs/roadmap/</loc>
+    <loc>https://hieudoanm.github.io/browsers/docs/project/packaging/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://hieudoanm.github.io/browsers/docs/project/roadmap/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

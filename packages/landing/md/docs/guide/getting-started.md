@@ -38,7 +38,7 @@ docker run -p 10000:10000 browserverless-server
 ```
 
 Both images serve `GET /api/v1/health` (also used as the `HEALTHCHECK`). See
-[Packaging & releases](packaging) for the full runtime library set.
+[Packaging & releases](/docs/project/packaging/) for the full runtime library set.
 
 ## Build from source
 

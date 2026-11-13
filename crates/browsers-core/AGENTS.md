@@ -27,6 +27,6 @@ cargo test -p browsers-core
   library code paths.
 - The initial navigation URL **must** be passed to `WebViewBuilder::url()` —
   do not "fix" this by calling `webview.load()` later; that race is documented
-  in `https://hieudoanm.github.io/browsers/docs/architecture/`.
+  in `https://hieudoanm.github.io/browsers/docs/project/architecture/`.
 - Servo is process-global: assume exactly one `BrowserContext` exists per
   process. Tests that need a browser must share one test function.
