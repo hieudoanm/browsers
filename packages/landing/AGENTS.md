@@ -2,8 +2,8 @@
 
 Next.js 16 (App Router) static-export landing page + docs site, Tailwind CSS
 v4 + DaisyUI 5, deployed to GitHub Pages at
-`https://hieudoanm.github.io/browserverless/` (project site — `basePath:
-"/browserverless"`, `assetPrefix` likewise in production).
+`https://hieudoanm.github.io/browsers/` (project site — `basePath:
+"/browsers"`, `assetPrefix` likewise in production).
 
 ## Commands
 
@@ -31,19 +31,22 @@ pnpm run typecheck
 - `src/lib/docs.ts` — recursively loads `md/docs/**/*.md` (front matter:
   `title`, `description`, `order`) into `Doc` records; the slug is the path
   relative to `md/docs/` without `.md` (e.g. `guide/getting-started`), and the
-  first segment becomes `doc.group` for sidebar grouping. `getDoc`/`getDocs`
-  are the only accessors — keep markdown parsing out of components.
+  first segment becomes `doc.group` for sidebar grouping (`GROUP_LABELS` in
+  `docs/layout.tsx` names the sections). `getDoc`/`getDocs` are the only
+  accessors — keep markdown parsing out of components.
 - `src/lib/site.ts` — repository/site URLs and constants.
 - `src/app/globals.css` — Tailwind v4 imports + the custom DaisyUI
   `browserverless` light theme.
 - `md/docs/` — documentation source, organized as `<group>/<chapter>.md`.
   Groups: `guide/` (getting-started, cli), `api/` (http-api, mcp),
+  `deployment/` (docker, aws, azure, gcp, terraform, heroku, render),
   `project/` (architecture, packaging, roadmap). `index.md` at the root is
-  the docs landing page; `order` front matter controls nav order. In-doc
-  links must be absolute (`/docs/<group>/<chapter>/`) — relative links break
-  under nested slugs.
+  the docs landing page; `order` front matter controls nav order. `index.md`
+  files inside groups are not routable — use named chapters. In-doc links
+  must be absolute (`/docs/<group>/<chapter>/`) — relative links break under
+  nested slugs.
 - `public/` — `favicon.ico`, `favicon.svg`, `logo.svg`, `og.png`, `robots.txt`,
-  `sitemap.xml`, `humans.txt`, served under `/browserverless/` in production.
+  `sitemap.xml`, `humans.txt`, served under `/browsers/` in production.
   Canonical sources live in `assets/branding/svg/` — regenerate with
   `assets/svg-to-png.sh`, do not hand-edit the PNGs.
 
@@ -51,7 +54,7 @@ pnpm run typecheck
 
 - Keep `output: "export"` in `next.config.ts` — the site must build to static
   HTML in `out/`; no server features or API routes.
-- `basePath`/`assetPrefix` are `/browserverless` in production builds;
+- `basePath`/`assetPrefix` are `/browsers` in production builds;
   `next/link` and metadata get it automatically, raw `<img src>` paths must
   include it (see the `LOGO` constant in `layout.tsx`).
 - Theme is light-only via `data-theme="browserverless"` on `<html>`; accent
