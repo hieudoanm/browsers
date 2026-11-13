@@ -1,4 +1,4 @@
-use std::cell::Cell;
+use std::cell::{Cell, RefCell};
 use std::rc::Rc;
 use std::time::{Duration, Instant};
 
@@ -82,6 +82,7 @@ impl BrowserContext {
         let delegate = Rc::new(PageDelegate::new());
         let handle = delegate.handle();
 
+        let requested_url = parsed.to_string();
         let webview: WebView = WebViewBuilder::new(&self.servo, self.rendering_context.clone())
             .url(parsed)
             .hidpi_scale_factor(Scale::new(self.config.device_scale_factor))
@@ -98,6 +99,7 @@ impl BrowserContext {
             handle,
             rendering_context: self.rendering_context.clone(),
             servo: self.servo.clone(),
+            requested_url: RefCell::new(requested_url),
         })
     }
 
@@ -115,6 +117,7 @@ pub struct Page {
     handle: Rc<PageHandle>,
     rendering_context: Rc<dyn RenderingContext>,
     servo: Servo,
+    requested_url: RefCell<String>,
 }
 
 impl Page {
@@ -125,6 +128,7 @@ impl Page {
         // constellation before issuing a top-level load, so the load is never
         // dropped as "unknown browsing context".
         self.servo.spin_event_loop();
+        *self.requested_url.borrow_mut() = parsed.to_string();
         self.webview.load(parsed);
         self.servo.spin_event_loop();
         Ok(())
@@ -132,8 +136,12 @@ impl Page {
 
     pub fn wait_for_load(&self, timeout_ms: u64) -> Result<(), BrowserError> {
         let deadline = Instant::now() + Duration::from_millis(timeout_ms);
+        let allow_blank = self.requested_url.borrow().starts_with("about:");
 
-        while !self.handle.is_loaded() {
+        loop {
+            if self.load_settled(allow_blank)? {
+                return Ok(());
+            }
             if Instant::now() >= deadline {
                 return Err(BrowserError::Timeout("waiting for page load".into()));
             }
@@ -142,10 +150,31 @@ impl Page {
             self.rendering_context
                 .make_current()
                 .map_err(|e| BrowserError::Rendering(format!("{e:?}")))?;
-            std::thread::sleep(Duration::from_millis(1));
+            std::thread::sleep(Duration::from_millis(16));
         }
+    }
 
-        Ok(())
+    /// load_settled reports whether the live document finished loading.
+    ///
+    /// Servo fires `LoadStatus::Complete` for the initial `about:blank`
+    /// document of every new browsing context — that document is "not a
+    /// navigation" — so the delegate flag alone cannot be trusted: it can be
+    /// set while the real navigation is still pending. Probing the document
+    /// itself is immune to that ordering: `location.href` only leaves
+    /// `about:blank` once the real navigation commits, and `readyState`
+    /// reaches `complete` only when the committed document is done.
+    fn load_settled(&self, allow_blank: bool) -> Result<bool, BrowserError> {
+        if !self.handle.is_loaded() {
+            return Ok(false);
+        }
+        let state = self.evaluate_string(
+            "document.readyState + ' ' + location.href",
+            Duration::from_secs(2),
+        )?;
+        let mut parts = state.splitn(2, ' ');
+        let ready = parts.next() == Some("complete");
+        let href = parts.next().unwrap_or_default();
+        Ok(ready && (allow_blank || href != "about:blank"))
     }
 
     pub fn wait_for_render(&self, timeout_ms: u64) -> Result<(), BrowserError> {

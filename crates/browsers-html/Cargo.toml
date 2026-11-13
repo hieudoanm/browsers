@@ -6,8 +6,8 @@ edition = "2021"
 [dependencies]
 browsers-dom = { path = "../browsers-dom" }
 thiserror = { workspace = true }
-html5ever = { workspace = true }
-markup5ever = { workspace = true }
+html5ever = "=0.40.1"
+markup5ever = "=0.40.0"
 tendril = "=0.5.1"
 
 [dev-dependencies]

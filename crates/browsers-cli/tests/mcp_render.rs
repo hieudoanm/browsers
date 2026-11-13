@@ -88,7 +88,13 @@ fn one_renderer_serves_several_calls_without_reinitialising_servo() {
     let second = renderer
         .scrape(&format!("http://{fast}/"), Some(60_000))
         .expect("second scrape must render after a screenshot");
-    assert!(second.html.contains("Hello MCP"), "second scrape html");
+    assert!(
+        second.html.contains("Hello MCP"),
+        "second scrape html: url={} timed_out={} html={:.400}",
+        second.url,
+        second.timed_out,
+        second.html
+    );
 
     // A per-call deadline shorter than the server's 30s response must bound the
     // call. Servo reports a page that never sends headers as a load failure
