@@ -18,33 +18,33 @@ pnpm run typecheck
 ## Structure
 
 - `src/app/layout.tsx` — metadata, fonts, and the global `Navbar`/`Footer` (all
-  content passed as props; the Docs dropdown is fed by `getDocs()`).
+  content passed as props; the Docs dropdown is fed by `getDocPages()`).
 - `src/app/page.tsx` — marketing page content passed to the shared components.
-- `src/app/docs/` — docs index (`page.tsx`), sidebar layout (`layout.tsx`), and
-  per-page route (`[slug]/page.tsx`) with prev/next navigation.
+- `src/app/docs/[[...slug]]/page.tsx` — docs catch-all; renders every Markdown
+  file under `docs/` as a static page at `/browsers/docs/<path>/` with search,
+  sectioned sidebar, "On this page" TOC, and prev/next navigation.
+- `src/app/api/search-index/route.ts` — `force-static` GET emitting the docs
+  search index as JSON for `DocsSearch`.
 - `src/components/molecules/` — shared components (`Navbar`, `Hero`,
-  `Features`, `CTA`, `Footer`, `SectionHead`, `Terminal`). These files are
-  **byte-identical across all `hieudoanm/*/packages/landing` repos** — do not
-  fork them; pass content via props instead.
-- `src/components/shared/Markdown.tsx` — `react-markdown` + `remark-gfm`
-  renderer with prose styling; the only markdown pipeline.
-- `src/lib/docs.ts` — recursively loads `md/docs/**/*.md` (front matter:
-  `title`, `description`, `order`) into `Doc` records; the slug is the path
-  relative to `md/docs/` without `.md` (e.g. `guide/getting-started`), and the
-  first segment becomes `doc.group` for sidebar grouping (`GROUP_LABELS` in
-  `docs/layout.tsx` names the sections). `getDoc`/`getDocs` are the only
-  accessors — keep markdown parsing out of components.
+  `Features`, `CTA`, `Footer`, `SectionHead`, `Terminal`, `DocsSearch`). These
+  files are **byte-identical across all `hieudoanm/*/packages/landing` repos** —
+  do not fork them; pass content via props instead.
+- `src/lib/docs.ts` — Markdown → HTML pipeline (`marked`), front matter
+  (`title`, `order`), relative/`.md` and absolute `/docs/…` link rewriting to
+  `/browsers/docs/*`, GitHub-style heading ids, TOC and plain-text extraction
+  for search. `getDocPages` is the only accessor — keep markdown parsing out
+  of components.
+- `src/lib/sections.ts` — `DOC_SECTIONS` sidebar groups and `sectionLabel`.
 - `src/lib/site.ts` — repository/site URLs and constants.
 - `src/app/globals.css` — Tailwind v4 imports + the custom DaisyUI
   `browserverless` light theme.
-- `md/docs/` — documentation source, organized as `<group>/<chapter>.md`.
+- `docs/` — documentation source, organized as `<group>/<chapter>.md`.
   Groups: `guide/` (getting-started, cli), `api/` (http-api, mcp),
   `deployment/` (docker, aws, azure, gcp, terraform, heroku, render),
-  `project/` (architecture, packaging, roadmap). `index.md` at the root is
-  the docs landing page; `order` front matter controls nav order. `index.md`
-  files inside groups are not routable — use named chapters. In-doc links
-  must be absolute (`/docs/<group>/<chapter>/`) — relative links break under
-  nested slugs.
+  `project/` (architecture, packaging, roadmap). `README.md` at the root is
+  the docs landing page; `order` front matter controls nav order. In-doc
+  links may be relative `.md` paths or absolute `/docs/<group>/<chapter>/`
+  paths — both are rewritten by `lib/docs.ts`.
 - `public/` — `favicon.ico`, `favicon.svg`, `logo.svg`, `og.png`, `robots.txt`,
   `sitemap.xml`, `humans.txt`, served under `/browsers/` in production.
   Canonical sources live in `assets/branding/svg/` — regenerate with
@@ -53,7 +53,8 @@ pnpm run typecheck
 ## Conventions
 
 - Keep `output: "export"` in `next.config.ts` — the site must build to static
-  HTML in `out/`; no server features or API routes.
+  HTML in `out/`; the only route handler is the `force-static`
+  `api/search-index` GET that emits JSON at build time.
 - `basePath`/`assetPrefix` are `/browsers` in production builds;
   `next/link` and metadata get it automatically, raw `<img src>` paths must
   include it (see the `LOGO` constant in `layout.tsx`).
@@ -62,6 +63,6 @@ pnpm run typecheck
 - Fonts: Inter via `next/font`; mono stack for terminal/code only.
 - Design follows the "AI unslop" rules: no filler badges, monospace only for
   code/commands, real CLI output in demos.
-- The landing page markets the CLI only — no app functionality, no API routes.
+- The landing page markets the CLI only — no app functionality.
 - Docs content should stay accurate to `docs/` and `README.md` at the repo
-  root; when behaviour changes, update `md/docs/` in the same change.
+  root; when behaviour changes, update `docs/` in the same change.

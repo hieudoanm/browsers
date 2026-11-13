@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google';
 import type { FC, ReactNode } from 'react';
 import Footer from '@/components/molecules/Footer';
 import Navbar from '@/components/molecules/Navbar';
-import { getDocs } from '@/lib/docs';
+import { getDocPages } from '@/lib/docs';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -54,13 +54,10 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => {
   const docGroups = [
     {
       label: 'Docs',
-      items: [
-        { label: 'Overview', href: '/docs' },
-        ...getDocs().map((doc) => ({
-          label: doc.title,
-          href: `/docs/${doc.slug}`,
-        })),
-      ],
+      items: getDocPages().map((doc) => ({
+        label: doc.title,
+        href: doc.slug ? `/docs/${doc.slug}/` : '/docs/',
+      })),
     },
   ];
 
