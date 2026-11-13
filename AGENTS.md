@@ -1,5 +1,3 @@
-# AGENTS.md
-
 # Lightweight Servo Browser — AI Agent Development Guide
 
 ## 0. Mission
