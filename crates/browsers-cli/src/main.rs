@@ -4,12 +4,12 @@ use browsers_cli::serve;
 use std::path::PathBuf;
 use std::time::{Duration, Instant};
 
-use clap::{Parser, Subcommand};
+use clap::{CommandFactory, FromArgMatches, Parser, Subcommand};
 
 #[derive(Parser)]
 #[command(name = "browserverless")]
 #[command(about = "Lightweight browser powered by Servo")]
-#[command(version = "0.1.0")]
+#[command(propagate_version = true)]
 struct Cli {
     #[command(subcommand)]
     command: Commands,
@@ -153,8 +153,17 @@ enum McpCommand {
     },
 }
 
+fn build_version() -> String {
+    format!(
+        "{} (build {})",
+        env!("CARGO_PKG_VERSION"),
+        env!("BROWSERS_BUILD_TIMESTAMP")
+    )
+}
+
 fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
-    let cli = Cli::parse();
+    let matches = Cli::command().version(build_version()).get_matches();
+    let cli = Cli::from_arg_matches(&matches).unwrap_or_else(|err| err.exit());
 
     match cli.command {
         Commands::Open { url: _ } => {
