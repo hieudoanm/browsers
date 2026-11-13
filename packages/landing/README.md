@@ -5,7 +5,7 @@ export deployed to GitHub Pages.
 
 ## Structure
 
-```
+```text
 src/app/             # routes: / (marketing), /docs, /docs/[slug]
 src/components/      # shared UI (molecules are shared across hieudoanm landings)
 src/lib/             # site constants + markdown doc loading (md/docs/)
