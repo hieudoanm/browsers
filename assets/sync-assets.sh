@@ -1,17 +1,23 @@
 #!/usr/bin/env bash
-# Sync branding SVG sources into packages/landing/public/.
+# Sync canonical branding SVGs into packages/landing/public/.
 #
-#   assets/branding/svg/logo.svg -> packages/landing/public/logo.svg + favicon.svg
-#   assets/branding/svg/og.svg   -> packages/landing/public/og.png (1200x630)
-#   packages/landing/public/logo.svg -> favicon.ico (16/32/48/256)
+#   assets/branding/svg/logo.svg -> public/logo.svg
+#   assets/branding/svg/og.svg   -> public/og.png (1200x630)
+#   public/logo.svg              -> public/favicon.ico (16/32/48/256)
 #
 # Requires rsvg-convert (librsvg); ImageMagick (magick) for favicon.ico.
+# No-op when the repo has no packages/landing/public directory.
 
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BRANDING_SVG="$REPO_ROOT/assets/branding/svg"
 PUBLIC_DIR="$REPO_ROOT/packages/landing/public"
+
+if [ ! -d "$PUBLIC_DIR" ]; then
+  echo "no packages/landing/public — nothing to sync"
+  exit 0
+fi
 
 command -v rsvg-convert >/dev/null 2>&1 || {
   echo "rsvg-convert is required but not installed" >&2
@@ -23,8 +29,7 @@ mkdir -p "$PUBLIC_DIR"
 
 if [ -f "$BRANDING_SVG/logo.svg" ]; then
   cp "$BRANDING_SVG/logo.svg" "$PUBLIC_DIR/logo.svg"
-  cp "$BRANDING_SVG/logo.svg" "$PUBLIC_DIR/favicon.svg"
-  echo "copied $BRANDING_SVG/logo.svg -> $PUBLIC_DIR/{logo,favicon}.svg"
+  echo "copied $BRANDING_SVG/logo.svg -> $PUBLIC_DIR/logo.svg"
 fi
 
 if [ -f "$BRANDING_SVG/og.svg" ]; then
