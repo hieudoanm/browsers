@@ -1,0 +1,8 @@
+packages:
+  - 'packages/**'
+  - 'crates'
+
+minimumReleaseAge: 0
+
+allowBuilds:
+  unrs-resolver: false

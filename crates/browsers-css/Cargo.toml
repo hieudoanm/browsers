@@ -1,0 +1,10 @@
+[package]
+name = "browsers-css"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+cssparser = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]

@@ -1,0 +1,13 @@
+[package]
+name = "browsers-paint"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+browsers-layout = { path = "../browsers-layout" }
+browsers-dom = { path = "../browsers-dom" }
+browsers-css = { path = "../browsers-css" }
+browsers-style = { path = "../browsers-style" }
+thiserror = { workspace = true }
+
+[dev-dependencies]

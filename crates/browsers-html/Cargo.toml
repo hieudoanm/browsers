@@ -1,0 +1,13 @@
+[package]
+name = "browsers-html"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+browsers-dom = { path = "../browsers-dom" }
+thiserror = { workspace = true }
+html5ever = { workspace = true }
+markup5ever = { workspace = true }
+tendril = "=0.5.1"
+
+[dev-dependencies]
