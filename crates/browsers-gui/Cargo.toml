@@ -6,7 +6,7 @@ edition = "2021"
 [dependencies]
 browsers-browser = { path = "../browsers-browser" }
 winit = { workspace = true }
-softbuffer = { workspace = true }
+softbuffer = "=0.4.8"
 image = { workspace = true }
 
 [dev-dependencies]
