@@ -12,15 +12,13 @@ export const metadata: Metadata = {
 const GROUP_LABELS: Record<string, string> = {
   guide: 'Guide',
   api: 'API',
+  deployment: 'Deployment',
   project: 'Project',
 };
 
 const groupLabel = (group: string | undefined): string => {
   if (!group) return 'Docs';
-  return (
-    GROUP_LABELS[group] ??
-    group.charAt(0).toUpperCase() + group.slice(1)
-  );
+  return GROUP_LABELS[group] ?? group.charAt(0).toUpperCase() + group.slice(1);
 };
 
 interface DocsLayoutProps {

@@ -53,5 +53,6 @@ members and are not compiled — see the [roadmap](/docs/project/roadmap/).
 - [CLI reference](/docs/guide/cli/) — every subcommand and flag
 - [HTTP API](/docs/api/http-api/) — endpoints, headers, error codes
 - [MCP server](/docs/api/mcp/) — tools, transport, protocol rules
+- [Deployment](/docs/deployment/docker/) — Docker, AWS, Azure, GCP, Terraform, Heroku, Render
 - [Architecture](/docs/project/architecture/) — how Servo is embedded and the hard constraints
 - [Roadmap](/docs/project/roadmap/) — phase status and known limitations
