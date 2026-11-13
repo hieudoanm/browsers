@@ -6,7 +6,7 @@
 //! separate test binary, and so a separate process, so it may own its own
 //! browser.
 
-use std::io::Write;
+use std::io::{Read, Write};
 use std::net::{TcpListener, TcpStream};
 use std::thread;
 use std::time::{Duration, Instant};
@@ -27,6 +27,17 @@ fn fixture_server(body: &'static str, delay: Duration) -> String {
             // fixture cannot block the accept loop.
             thread::spawn(move || {
                 let Ok(mut stream) = stream else { return };
+                // Consume the request head before responding: closing a socket
+                // with unread request bytes sends RST, which makes reqwest
+                // discard the response as a connection error.
+                let mut received = Vec::new();
+                let mut chunk = [0u8; 1024];
+                while !received.windows(4).any(|w| w == b"\r\n\r\n") {
+                    match stream.read(&mut chunk) {
+                        Ok(0) | Err(_) => return,
+                        Ok(n) => received.extend_from_slice(&chunk[..n]),
+                    }
+                }
                 if !delay.is_zero() {
                     thread::sleep(delay);
                 }
