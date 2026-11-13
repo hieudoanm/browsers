@@ -100,7 +100,7 @@ The scrape body is the page's full HTML; the screenshot body is the page rendere
 at the serve viewport (`--width`/`--height`, default 1280x720). Both carry
 metadata about the URL and the request cost as response headers:
 
-```
+```yaml
 x-browserverless-url:          final URL after redirects (location.href)
 x-browserverless-title:        page title (document.title)
 x-browserverless-load-status:  "ok" or "partial" (timed out before full load)
