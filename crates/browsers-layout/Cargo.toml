@@ -1,0 +1,11 @@
+[package]
+name = "browsers-layout"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+browsers-dom = { path = "../browsers-dom" }
+browsers-style = { path = "../browsers-style" }
+thiserror = { workspace = true }
+
+[dev-dependencies]

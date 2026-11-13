@@ -1,0 +1,14 @@
+# rust
+target/
+temp/
+
+# node / pnpm
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+.turbo/
+
+# misc
+.DS_Store
+.env*.local

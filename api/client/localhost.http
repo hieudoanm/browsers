@@ -1,0 +1,55 @@
+### Scrape a static HTML page
+# Start the server first:
+#   browserverless serve --bind 127.0.0.1:8080
+# Response: full HTML body + metadata headers:
+#   x-browserverless-url, -title, -load-status, -memory-kb, -duration-ms
+POST http://127.0.0.1:8080/api/v1/scrape
+Content-Type: application/json
+
+{
+  "url": "https://example.com/"
+}
+
+###
+
+### Scrape a JSON API endpoint
+# The response body is the loaded page's serialized DOM; for a raw JSON
+# endpoint that is the JSON text wrapped in a minimal <html><body> doc.
+POST http://127.0.0.1:8080/api/v1/scrape
+Content-Type: application/json
+
+{
+  "url": "https://jsonplaceholder.typicode.com/todos/1"
+}
+
+###
+
+### Scrape endpoint with an unsupported scheme (expects 400)
+POST http://127.0.0.1:8080/api/v1/scrape
+Content-Type: application/json
+
+{
+  "url": "file:///etc/passwd"
+}
+
+###
+
+### Screenshot a page
+# Response: PNG image (1280x720 viewport) + the same metadata headers
+# as scrape (x-browserverless-url, -title, -load-status, -memory-kb, -duration-ms).
+POST http://127.0.0.1:8080/api/v1/screenshot
+Content-Type: application/json
+
+{
+  "url": "https://example.com/"
+}
+
+###
+
+### Server health (expects 200 {"status":"ok"})
+GET http://127.0.0.1:8080/api/v1/health
+
+###
+
+### Server version (expects 200)
+GET http://127.0.0.1:8080/api/v1/version

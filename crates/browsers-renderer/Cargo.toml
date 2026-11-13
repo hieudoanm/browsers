@@ -1,0 +1,13 @@
+[package]
+name = "browsers-renderer"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+browsers-paint = { path = "../browsers-paint" }
+browsers-layout = { path = "../browsers-layout" }
+browsers-css = { path = "../browsers-css" }
+image = { workspace = true }
+thiserror = { workspace = true }
+
+[dev-dependencies]

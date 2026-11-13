@@ -1,0 +1,41 @@
+### Server health (expects 200 {"status":"ok"})
+GET https://browserverless.onrender.com/api/v1/health
+
+###
+
+### Server version (expects 200)
+GET https://browserverless.onrender.com/api/v1/version
+
+###
+
+### Scrape a static HTML page
+# Response: full HTML body + metadata headers:
+#   x-browserverless-url, -title, -load-status, -memory-kb, -duration-ms
+POST https://browserverless.onrender.com/api/v1/scrape
+Content-Type: application/json
+
+{
+  "url": "https://example.com/"
+}
+
+###
+
+### Scrape endpoint with an unsupported scheme (expects 400)
+POST https://browserverless.onrender.com/api/v1/scrape
+Content-Type: application/json
+
+{
+  "url": "file:///etc/passwd"
+}
+
+###
+
+### Screenshot a page
+# Response: PNG image (1280x720 viewport) + the same metadata headers
+# as scrape (x-browserverless-url, -title, -load-status, -memory-kb, -duration-ms).
+POST https://browserverless.onrender.com/api/v1/screenshot
+Content-Type: application/json
+
+{
+  "url": "https://example.com/"
+}

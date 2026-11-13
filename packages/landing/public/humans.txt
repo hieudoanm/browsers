@@ -1,0 +1,14 @@
+/* TEAM */
+Site: https://hieudoanm.github.io/browsers/
+Author: Hieu Doan
+Location: Vietnam
+
+/* SITE */
+Last update: 2026-11-13
+Language: English
+Doctype: HTML5
+Software: Next.js 16
+
+/* COMPONENTS */
+browserverless — Servo-powered browser runtime
+https://github.com/hieudoanm/browsers

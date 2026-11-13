@@ -1,0 +1,206 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Browserverless",
+    "description": "Lightweight Servo-powered headless browser server",
+    "version": "0.0.0"
+  },
+  "servers": [
+    { "url": "/", "description": "Local server" }
+  ],
+  "paths": {
+    "/api/v1/health": {
+      "get": {
+        "summary": "Health check",
+        "operationId": "health",
+        "responses": {
+          "200": {
+            "description": "Server is healthy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "string", "example": "ok" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/version": {
+      "get": {
+        "summary": "Server version",
+        "operationId": "version",
+        "responses": {
+          "200": {
+            "description": "Server version string",
+            "content": {
+              "text/plain": {
+                "schema": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/scrape": {
+      "post": {
+        "summary": "Scrape a page and return full HTML",
+        "operationId": "scrape",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/RenderRequest" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Full HTML of the rendered page",
+            "headers": {
+              "x-browserverless-url": {
+                "schema": { "type": "string" },
+                "description": "Final URL after redirects"
+              },
+              "x-browserverless-title": {
+                "schema": { "type": "string" },
+                "description": "Page title"
+              },
+              "x-browserverless-load-status": {
+                "schema": { "type": "string", "enum": ["ok", "partial"] },
+                "description": "Whether the page loaded fully or timed out"
+              },
+              "x-browserverless-memory-kb": {
+                "schema": { "type": "string" },
+                "description": "Peak RSS increase in KB"
+              },
+              "x-browserverless-duration-ms": {
+                "schema": { "type": "string" },
+                "description": "Wall time in milliseconds"
+              }
+            },
+            "content": {
+              "text/html": {
+                "schema": { "type": "string" }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "405": { "$ref": "#/components/responses/MethodNotAllowed" },
+          "500": { "$ref": "#/components/responses/InternalError" },
+          "504": { "$ref": "#/components/responses/Timeout" }
+        }
+      }
+    },
+    "/api/v1/screenshot": {
+      "post": {
+        "summary": "Screenshot a page as PNG",
+        "operationId": "screenshot",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/RenderRequest" }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "PNG screenshot of the rendered page",
+            "headers": {
+              "x-browserverless-url": {
+                "schema": { "type": "string" },
+                "description": "Final URL after redirects"
+              },
+              "x-browserverless-title": {
+                "schema": { "type": "string" },
+                "description": "Page title"
+              },
+              "x-browserverless-load-status": {
+                "schema": { "type": "string", "enum": ["ok", "partial"] },
+                "description": "Whether the page loaded fully or timed out"
+              },
+              "x-browserverless-memory-kb": {
+                "schema": { "type": "string" },
+                "description": "Peak RSS increase in KB"
+              },
+              "x-browserverless-duration-ms": {
+                "schema": { "type": "string" },
+                "description": "Wall time in milliseconds"
+              }
+            },
+            "content": {
+              "image/png": {
+                "schema": { "type": "string", "format": "binary" }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "405": { "$ref": "#/components/responses/MethodNotAllowed" },
+          "500": { "$ref": "#/components/responses/InternalError" },
+          "504": { "$ref": "#/components/responses/Timeout" }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "RenderRequest": {
+        "type": "object",
+        "required": ["url"],
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to render (http/https only)",
+            "example": "https://example.com/"
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": { "type": "string" }
+        }
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "Invalid request (missing/malformed body, invalid URL)",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+          }
+        }
+      },
+      "MethodNotAllowed": {
+        "description": "HTTP method not allowed on this endpoint",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+          }
+        }
+      },
+      "InternalError": {
+        "description": "Render failed",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+          }
+        }
+      },
+      "Timeout": {
+        "description": "Render timed out",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+          }
+        }
+      }
+    }
+  }
+}

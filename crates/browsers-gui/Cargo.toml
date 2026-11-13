@@ -1,0 +1,12 @@
+[package]
+name = "browsers-gui"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+browsers-browser = { path = "../browsers-browser" }
+winit = { workspace = true }
+softbuffer = { workspace = true }
+image = { workspace = true }
+
+[dev-dependencies]
