@@ -3,7 +3,7 @@
 Everything below is verified against the current implementation. The Servo
 version is pinned in `Cargo.lock`; Servo's embedding API is pre-1.0 and changes
 between releases — always re-verify against the pinned source (see the
-[architecture docs](https://hieudoanm.github.io/browsers/docs/architecture/)
+[architecture docs](https://hieudoanm.github.io/browsers/docs/project/architecture/)
 §Servo Integration Notes).
 
 ## Setup
@@ -15,7 +15,7 @@ Prerequisites:
 - Platform graphics stack required by Servo (surfman backend, etc.). macOS
   works out of the box; Linux needs the package list in CI
   (`.github/workflows/ci.yaml`) or the landing
-  [getting-started](https://hieudoanm.github.io/browsers/docs/getting-started/)
+  [getting-started](https://hieudoanm.github.io/browsers/docs/guide/getting-started/)
   docs. Headed mode additionally needs a windowing session.
 
 ## Build
@@ -60,12 +60,12 @@ cargo test --workspace
 ```
 
 CI runs the same gates via `.github/workflows/ci.yaml` (see the
-[packaging docs](https://hieudoanm.github.io/browsers/docs/packaging/)).
+[packaging docs](https://hieudoanm.github.io/browsers/docs/project/packaging/)).
 
 ## Landing page
 
 `packages/landing` is a Next.js static export (Tailwind + DaisyUI) deployed to
-GitHub Pages. Docs content lives in `packages/landing/md/docs/*.md` — update it
+GitHub Pages. Docs content lives in `packages/landing/md/docs/**/*.md` — update it
 when behaviour changes. See `packages/landing/AGENTS.md`.
 
 ## Coding Conventions
@@ -85,7 +85,7 @@ Servo-specific rules (`AGENTS.md` §44): inspect the exact Servo version in
 `Cargo.lock`, prefer the public embedding API, isolate unavoidable Servo
 internals at the single boundary (`crates/browsers-core/src/lib.rs`), document
 every workaround in the
-[architecture docs](https://hieudoanm.github.io/browsers/docs/architecture/)
+[architecture docs](https://hieudoanm.github.io/browsers/docs/project/architecture/)
 §Servo Integration Notes, and add a regression test.
 
 ## Testing Conventions
@@ -122,7 +122,7 @@ the MVP acceptance test.
 
 Symptoms: saved PNG is uniformly white; `readback distinct_colors=1`.
 Cause to rule out first: the navigation never reached the page. See the
-[architecture docs](https://hieudoanm.github.io/browsers/docs/architecture/)
+[architecture docs](https://hieudoanm.github.io/browsers/docs/project/architecture/)
 §Servo Integration Notes §1 — pass the URL via `WebViewBuilder::url()` on
 `new_page`, never relying on an uncoupled `webview.load()` right after build.
 
@@ -172,7 +172,7 @@ Per `AGENTS.md` §2/§41:
 3. Fix embedding API breakages at the single boundary
    (`crates/browsers-core/src/lib.rs`).
 4. `cargo test --workspace`, then real-URL smoke tests (see the
-   [architecture docs](https://hieudoanm.github.io/browsers/docs/architecture/)
+   [architecture docs](https://hieudoanm.github.io/browsers/docs/project/architecture/)
    §Compatibility).
 5. Record any new workaround in the architecture docs §Servo Integration
    Notes; update the compatibility notes.

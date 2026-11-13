@@ -27,31 +27,31 @@ JavaScript) and this project is a thin embedder shell around it.
 
 ## Modes
 
-| Mode      | Entry point                  | Use it for                                  |
-| --------- | ---------------------------- | ------------------------------------------- |
-| CLI       | `browserverless <command>`   | One-off screenshots, scrapes, memory probes |
-| Server    | `browserverless serve`       | An HTTP rendering API                       |
-| MCP       | `browserverless mcp serve`   | AI agents (Claude, Cursor, custom clients)  |
-| Headed    | `browserverless open`        | Interactive browsing                         |
+| Mode   | Entry point                | Use it for                                  |
+| ------ | -------------------------- | ------------------------------------------- |
+| CLI    | `browserverless <command>` | One-off screenshots, scrapes, memory probes |
+| Server | `browserverless serve`     | An HTTP rendering API                       |
+| MCP    | `browserverless mcp serve` | AI agents (Claude, Cursor, custom clients)  |
+| Headed | `browserverless open`      | Interactive browsing                        |
 
 ## Workspace
 
-| Crate                     | Responsibility                                             |
-| ------------------------- | ---------------------------------------------------------- |
-| `browsers-core`     | Servo integration boundary: `BrowserContext`, `Page`       |
-| `browsers-headless` | Offscreen rendering: load → wait → screenshot / HTML dump  |
+| Crate               | Responsibility                                              |
+| ------------------- | ----------------------------------------------------------- |
+| `browsers-core`     | Servo integration boundary: `BrowserContext`, `Page`        |
+| `browsers-headless` | Offscreen rendering: load → wait → screenshot / HTML dump   |
 | `browsers-cli`      | clap CLI, HTTP server, and MCP server; bin `browserverless` |
 
 The remaining `browsers-*` crates under `crates/` (`-css`, `-dom`,
 `-gui`, `-html`, `-layout`, `-network`, `-paint`, `-renderer`, `-style`) are an
 experimental pure-Rust engine kept for research. They are **not** workspace
-members and are not compiled — see the [roadmap](roadmap).
+members and are not compiled — see the [roadmap](/docs/project/roadmap/).
 
 ## Documentation map
 
-- [Getting started](getting-started) — install, build, first screenshot
-- [CLI reference](cli) — every subcommand and flag
-- [HTTP API](http-api) — endpoints, headers, error codes
-- [MCP server](mcp) — tools, transport, protocol rules
-- [Architecture](architecture) — how Servo is embedded and the hard constraints
-- [Roadmap](roadmap) — phase status and known limitations
+- [Getting started](/docs/guide/getting-started/) — install, build, first screenshot
+- [CLI reference](/docs/guide/cli/) — every subcommand and flag
+- [HTTP API](/docs/api/http-api/) — endpoints, headers, error codes
+- [MCP server](/docs/api/mcp/) — tools, transport, protocol rules
+- [Architecture](/docs/project/architecture/) — how Servo is embedded and the hard constraints
+- [Roadmap](/docs/project/roadmap/) — phase status and known limitations

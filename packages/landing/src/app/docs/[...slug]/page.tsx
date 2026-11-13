@@ -8,25 +8,26 @@ import { getDoc, getDocs } from '@/lib/docs';
 export const dynamicParams = false;
 
 export const generateStaticParams = () => {
-  return getDocs().map((doc) => ({ slug: doc.slug }));
+  return getDocs().map((doc) => ({ slug: doc.slug.split('/') }));
 };
 
 export const generateMetadata = async ({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string[] }>;
 }): Promise<Metadata> => {
   const { slug } = await params;
-  const doc = getDoc(slug);
+  const doc = getDoc(slug.join('/'));
   return doc ? { title: doc.title } : {};
 };
 
 interface DocPageProps {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string[] }>;
 }
 
 const DocPage: FC<DocPageProps> = async ({ params }) => {
-  const { slug } = await params;
+  const { slug: segments } = await params;
+  const slug = segments.join('/');
   const doc = getDoc(slug);
   if (!doc) notFound();
 

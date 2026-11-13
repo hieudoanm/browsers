@@ -21,12 +21,12 @@ browserverless screenshot <url> \
   [--output screenshot.png] [--width 1280] [--height 720] [--timeout 30000]
 ```
 
-| Flag        | Default          | Meaning                                  |
-| ----------- | ---------------- | ---------------------------------------- |
-| `--output`  | `screenshot.png` | PNG output path                          |
-| `--width`   | `1280`           | Viewport width in CSS pixels             |
-| `--height`  | `720`            | Viewport height in CSS pixels            |
-| `--timeout` | `30000`          | Load timeout in milliseconds             |
+| Flag        | Default          | Meaning                       |
+| ----------- | ---------------- | ----------------------------- |
+| `--output`  | `screenshot.png` | PNG output path               |
+| `--width`   | `1280`           | Viewport width in CSS pixels  |
+| `--height`  | `720`            | Viewport height in CSS pixels |
+| `--timeout` | `30000`          | Load timeout in milliseconds  |
 
 ## `scrape`
 
@@ -58,7 +58,7 @@ browserverless memory <url> [--timeout 30000] [--observe 5000]
 
 ## `serve`
 
-Start the HTTP rendering API. See [HTTP API](http-api).
+Start the HTTP rendering API. See [HTTP API](/docs/api/http-api/).
 
 ```bash
 browserverless serve [--bind 127.0.0.1:8080] [--port 8080]
@@ -74,7 +74,7 @@ banner with the LAN URL, then logs one line per request:
 
 ## `mcp serve`
 
-Start the MCP server over stdio. See [MCP server](mcp).
+Start the MCP server over stdio. See [MCP server](/docs/api/mcp/).
 
 ```bash
 browserverless mcp serve [--width 1280] [--height 720] [--timeout 30000]

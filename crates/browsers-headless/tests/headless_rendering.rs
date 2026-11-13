@@ -4,10 +4,8 @@ use browsers_headless::{HeadlessBrowser, HeadlessConfig};
 /// so this entire pipeline is exercised in a single test.
 #[test]
 fn headless_rendering_pipeline() {
-    let fixture_dir = std::env::temp_dir().join(format!(
-        "browsers-headless-test-{}",
-        std::process::id()
-    ));
+    let fixture_dir =
+        std::env::temp_dir().join(format!("browsers-headless-test-{}", std::process::id()));
     std::fs::create_dir_all(&fixture_dir).unwrap();
 
     let red = fixture_dir.join("red.html");

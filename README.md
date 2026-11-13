@@ -23,7 +23,7 @@ The bin is `browserverless`; the compile package is `browsers-cli`.
 Nine further `browsers-*` crates (`-css`, `-dom`, `-gui`, `-html`,
 `-layout`, `-network`, `-paint`, `-renderer`, `-style`) are an experimental
 pure-Rust engine prototype — intentionally **not** workspace members; see
-the [roadmap docs](https://hieudoanm.github.io/browsers/docs/roadmap/).
+the [roadmap docs](https://hieudoanm.github.io/browsers/docs/project/roadmap/).
 
 `packages/landing` is the Next.js static site (marketing page + docs) deployed
 to GitHub Pages; `assets/` holds the canonical branding SVGs.
@@ -110,7 +110,7 @@ x-browserverless-duration-ms:  wall time for the request
 
 Only `http`/`https` targets are allowed (400 otherwise); missing `url` or invalid
 JSON body is 400; a non-POST on `/api/v1/scrape` or `/api/v1/screenshot` is 405;
-unknown paths are 404; render timeouts are 504. Details in the [architecture docs](https://hieudoanm.github.io/browsers/docs/architecture/)
+unknown paths are 404; render timeouts are 504. Details in the [architecture docs](https://hieudoanm.github.io/browsers/docs/project/architecture/)
 §Server Mode.
 
 ### MCP
@@ -138,7 +138,7 @@ answered.
 
 Servo initialises process-wide state that panics if a second browser is
 constructed, so the server builds one browser on first use and gives each tool
-call a fresh page within it. Details in the [architecture docs](https://hieudoanm.github.io/browsers/docs/architecture/) §MCP.
+call a fresh page within it. Details in the [architecture docs](https://hieudoanm.github.io/browsers/docs/project/architecture/) §MCP.
 
 ## Test / check
 
@@ -166,7 +166,7 @@ binaries, plus the landing build/deploy to GitHub Pages).
 - Use one page per `BrowserContext`; multi-page in one context is unreliable today.
 - Initial navigation must be passed via `WebViewBuilder::url()`, not `webview.load()`
   afterwards (a load race produced the all-white-screenshot bug; now fixed with a
-  regression test). Details in the [architecture docs](https://hieudoanm.github.io/browsers/docs/architecture/) §Servo Integration Notes.
+  regression test). Details in the [architecture docs](https://hieudoanm.github.io/browsers/docs/project/architecture/) §Servo Integration Notes.
 
 ## License
 
