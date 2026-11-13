@@ -47,8 +47,9 @@ pnpm run typecheck
   paths — both are rewritten by `lib/docs.ts`.
 - `public/` — `favicon.ico`, `favicon.svg`, `logo.svg`, `og.png`, `robots.txt`,
   `sitemap.xml`, `humans.txt`, served under `/browsers/` in production.
-  Canonical sources live in `assets/branding/svg/` — regenerate with
-  `assets/svg-to-png.sh`, do not hand-edit the PNGs.
+  Canonical sources live in `assets/branding/svg/` — regenerate PNGs with
+  `assets/svg-to-png.sh` and `public/` assets with `assets/landing-assets.sh`;
+  do not hand-edit the PNGs.
 
 ## Conventions
 

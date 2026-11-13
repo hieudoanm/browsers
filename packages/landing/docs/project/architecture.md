@@ -98,7 +98,7 @@ URL
   v
 HeadlessBrowser::render_url(url)
   ├── BrowserContext::new_page(url)     # WebViewBuilder::url(...) → build → resize viewport
-  ├── Page::wait_for_load(timeout)      # spin servo loop until LoadStatus::Complete
+  ├── Page::wait_for_load(timeout)      # spin servo loop until the committed document reports readyState=complete
   └── spin loop for wait_after_load_ms  # allow layout + paint frames to settle
   │
   v
@@ -107,7 +107,8 @@ Page::save_screenshot(path)             # webview.take_screenshot → RgbaImage 
 
 `PageDelegate::notify_new_frame_ready` calls `webview.paint()` and bumps
 `PageHandle.frames`. `PageDelegate::notify_load_status_changed` sets `loaded`
-on `LoadStatus::Complete`.
+on `LoadStatus::Complete` — but that flag alone is not sufficient for
+`wait_for_load`, see "Waiting Strategy" below.
 
 ### Public API
 
@@ -145,7 +146,15 @@ impl HeadlessBrowser {
 
 - `wait_for_load` spins `servo.spin_event_loop()` and
   `rendering_context.make_current()` until the delegate observes
-  `LoadStatus::Complete`, or the deadline is hit.
+  `LoadStatus::Complete` **and** a JS probe confirms the committed document is
+  done: `document.readyState == 'complete'` together with a non-empty
+  `performance.getEntriesByType('navigation')` list. The extra probe exists
+  because Servo also fires `Complete` for the initial `about:blank` document
+  of every new browsing context — a document that is "not a navigation" — and
+  that stray event can win the race against the real load (observed as
+  flaky `mcp_render` failures). Navigation Timing entries are only recorded
+  for real navigations, so the combination cannot be satisfied by `about:blank`.
+  `about:` URLs bypass the entry check.
 - `screenshot_url` additionally spins for `wait_after_load_ms` (16ms sleep per
   iteration) so layout and paint pipe through. Timing-sensitive pages may need a
   larger value.
@@ -458,7 +467,8 @@ process (the current CLI/headless layout).
 
 ### 8. Load-Status ↔ Timeout Mapping
 
-- `load_timeout_ms` waits for `LoadStatus::Complete` via the delegate.
+- `load_timeout_ms` waits for `LoadStatus::Complete` plus the navigation-entry
+  probe described in "Waiting Strategy".
   `hard_fail: true` (default opts) means load failures surface as
   timeouts/failures rather than a rendered error page.
 - The `HeadlessConfig`/`HeadlessError::Timeout` boundary is where navigation
@@ -493,8 +503,9 @@ default) shifts the box and breaks the pixel checks.
 - **Initial navigation must come from `WebViewBuilder::url()`.** `load()` right
   after `build()` races the constellation and is dropped (white screenshot).
   See [Servo Integration Notes §1](#1-initial-navigation-must-be-set-in-webviewbuilder-was-all-white-screenshots).
-- **No network-idle condition.** Waiting is `LoadStatus::Complete` + fixed
-  `wait_after_load_ms`. JS-driven or layout-late pages may need a larger wait.
+- **No network-idle condition.** Waiting is `LoadStatus::Complete` + a
+  Navigation-Timing probe + fixed `wait_after_load_ms`. JS-driven or
+  layout-late pages may need a larger wait.
 - **Screenshot of never-idle pages is racy.** `take_screenshot` only fires its
   callback once the page has **no pending frames**; continuously-animating
   pages (e.g. Instagram) never satisfy that, so it times out by design. The

@@ -158,23 +158,30 @@ impl Page {
     ///
     /// Servo fires `LoadStatus::Complete` for the initial `about:blank`
     /// document of every new browsing context — that document is "not a
-    /// navigation" — so the delegate flag alone cannot be trusted: it can be
-    /// set while the real navigation is still pending. Probing the document
-    /// itself is immune to that ordering: `location.href` only leaves
-    /// `about:blank` once the real navigation commits, and `readyState`
-    /// reaches `complete` only when the committed document is done.
+    /// navigation" — and it updates `location.href` to the target URL at
+    /// navigation approval, so neither the delegate flag nor the URL can be
+    /// trusted on their own. A Navigation Timing entry is only recorded for
+    /// real navigations, so `readyState == complete` together with a
+    /// non-empty `navigation` entry list can only be true for the committed
+    /// page.
     fn load_settled(&self, allow_blank: bool) -> Result<bool, BrowserError> {
         if !self.handle.is_loaded() {
             return Ok(false);
         }
         let state = self.evaluate_string(
-            "document.readyState + ' ' + location.href",
+            "document.readyState + '|' + \
+             (performance.getEntriesByType ? \
+               performance.getEntriesByType('navigation').length : 0)",
             Duration::from_secs(2),
         )?;
-        let mut parts = state.splitn(2, ' ');
+        let mut parts = state.split('|');
         let ready = parts.next() == Some("complete");
-        let href = parts.next().unwrap_or_default();
-        Ok(ready && (allow_blank || href != "about:blank"))
+        let navigated = parts
+            .next()
+            .and_then(|v| v.parse::<u64>().ok())
+            .unwrap_or(0)
+            > 0;
+        Ok(ready && (allow_blank || navigated))
     }
 
     pub fn wait_for_render(&self, timeout_ms: u64) -> Result<(), BrowserError> {

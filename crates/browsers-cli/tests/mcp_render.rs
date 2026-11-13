@@ -70,7 +70,13 @@ fn one_renderer_serves_several_calls_without_reinitialising_servo() {
     let first = renderer
         .scrape(&format!("http://{fast}/"), Some(60_000))
         .expect("first scrape must render");
-    assert!(first.html.contains("Hello MCP"), "first scrape html");
+    assert!(
+        first.html.contains("Hello MCP"),
+        "first scrape html: url={} timed_out={} html={:.400}",
+        first.url,
+        first.timed_out,
+        first.html
+    );
     assert_eq!(first.title, "mcp fixture");
     assert!(!first.timed_out, "the fixture responds immediately");
 
