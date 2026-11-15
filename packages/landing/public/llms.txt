@@ -1,0 +1,34 @@
+# browserverless
+
+> A Servo-powered browser runtime as a library, a CLI, and an HTTP server — headless screenshots, scraping, and MCP tools from one Rust binary.
+
+- Repository: https://github.com/hieudoanm/browsers
+- Site: https://hieudoanm.github.io/browsers/
+
+## Documentation
+
+### api
+
+- [HTTP API](https://hieudoanm.github.io/browsers/docs/api/http-api/)
+- [MCP server](https://hieudoanm.github.io/browsers/docs/api/mcp/)
+### deployment
+
+- [AWS](https://hieudoanm.github.io/browsers/docs/deployment/aws/)
+- [Azure](https://hieudoanm.github.io/browsers/docs/deployment/azure/)
+- [Docker](https://hieudoanm.github.io/browsers/docs/deployment/docker/)
+- [GCP](https://hieudoanm.github.io/browsers/docs/deployment/gcp/)
+- [Heroku](https://hieudoanm.github.io/browsers/docs/deployment/heroku/)
+- [Render](https://hieudoanm.github.io/browsers/docs/deployment/render/)
+- [Terraform](https://hieudoanm.github.io/browsers/docs/deployment/terraform/)
+### guide
+
+- [CLI reference](https://hieudoanm.github.io/browsers/docs/guide/cli/)
+- [Getting started](https://hieudoanm.github.io/browsers/docs/guide/getting-started/)
+### overview
+
+- [Browserverless documentation](https://hieudoanm.github.io/browsers/docs/)
+### project
+
+- [Architecture](https://hieudoanm.github.io/browsers/docs/project/architecture/)
+- [Packaging & releases](https://hieudoanm.github.io/browsers/docs/project/packaging/)
+- [Roadmap](https://hieudoanm.github.io/browsers/docs/project/roadmap/)
