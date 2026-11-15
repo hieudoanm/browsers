@@ -29,6 +29,15 @@ export const metadata: Metadata = {
     template: '%s — browserverless',
   },
   description: DESCRIPTION,
+  keywords: [
+    'headless browser',
+    'browser automation',
+    'serverless browser',
+    'Rust',
+    'web scraping',
+  ],
+  authors: [{ name: 'hieudoan', url: 'https://github.com/hieudoanm/browsers' }],
+  category: 'software',
   openGraph: {
     siteName: 'browserverless',
     type: 'website',
@@ -44,6 +53,28 @@ export const metadata: Metadata = {
       { url: `${BASE}/favicon.svg`, type: 'image/svg+xml' },
     ],
   },
+};
+
+
+const JSON_LD = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      name: 'browserverless',
+      url: 'https://hieudoanm.github.io/browsers/',
+      description: 'A Servo-powered browser runtime as a library, a CLI, and an HTTP server — headless screenshots, scraping, and MCP tools from one Rust binary.',
+    },
+    {
+      '@type': 'SoftwareApplication',
+      name: 'browserverless',
+      applicationCategory: 'UtilitiesApplication',
+      description: 'A Servo-powered browser runtime as a library, a CLI, and an HTTP server — headless screenshots, scraping, and MCP tools from one Rust binary.',
+      url: 'https://hieudoanm.github.io/browsers/',
+      codeRepository: 'https://github.com/hieudoanm/browsers',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    },
+  ]
 };
 
 interface RootLayoutProps {
@@ -67,6 +98,10 @@ const RootLayout: FC<RootLayoutProps> = ({ children }) => {
       data-theme="browserverless"
       className={`scroll-smooth antialiased motion-reduce:scroll-auto ${inter.className}`}>
       <body className="bg-base-100 text-base-content m-0 leading-relaxed">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+        />
         <Navbar
           name="browserverless"
           logoSrc={LOGO}
