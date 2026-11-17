@@ -150,6 +150,14 @@ enum McpCommand {
         /// Load timeout in milliseconds
         #[arg(long, default_value = "30000")]
         timeout: u64,
+
+        /// Serve over streamable HTTP on this address instead of stdio
+        #[arg(long)]
+        http: Option<String>,
+
+        /// Bearer token required on HTTP requests (or MCP_AUTH_TOKEN)
+        #[arg(long)]
+        token: Option<String>,
     },
 }
 
@@ -274,10 +282,23 @@ fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync>> {
                     width,
                     height,
                     timeout,
+                    http,
+                    token,
                 },
         } => {
-            // Diagnostics go to stderr so stdout carries nothing but frames.
-            browsers_cli::mcp::run(width, height, timeout, &mut std::io::stderr())?;
+            match http {
+                Some(addr) => {
+                    browsers_cli::mcp::run_http(
+                        &addr,
+                        token.or_else(|| std::env::var("MCP_AUTH_TOKEN").ok()),
+                        width,
+                        height,
+                        timeout,
+                    )?;
+                }
+                // Diagnostics go to stderr so stdout carries nothing but frames.
+                None => browsers_cli::mcp::run(width, height, timeout, &mut std::io::stderr())?,
+            }
         }
 
         Commands::Serve {
