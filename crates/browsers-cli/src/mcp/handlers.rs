@@ -31,6 +31,18 @@ pub trait Renderer {
     fn screenshot(&self, url: &str, timeout_ms: Option<u64>) -> Result<ScreenshotOutcome, String>;
 }
 
+/// Shared renderers can be passed to `register` through an `Arc` so several
+/// transports share one browser instance.
+impl<T: Renderer + ?Sized> Renderer for std::sync::Arc<T> {
+    fn scrape(&self, url: &str, timeout_ms: Option<u64>) -> Result<ScrapeOutcome, String> {
+        (**self).scrape(url, timeout_ms)
+    }
+
+    fn screenshot(&self, url: &str, timeout_ms: Option<u64>) -> Result<ScreenshotOutcome, String> {
+        (**self).screenshot(url, timeout_ms)
+    }
+}
+
 /// ScrapeOutcome is the text payload of the scrape tool.
 #[derive(Debug, Clone)]
 pub struct ScrapeOutcome {

@@ -128,3 +128,21 @@ pub fn list_result(tools: &[Tool]) -> Value {
     sorted.sort_by(|a, b| a.name.cmp(&b.name));
     json!({ "tools": sorted })
 }
+
+/// Human-readable display title derived from a tool name.
+pub fn titleize(name: &str) -> String {
+    let mut out = String::new();
+    let mut cap = true;
+    for c in name.chars() {
+        if c == '_' || c == '-' {
+            out.push(' ');
+            cap = true;
+        } else if cap {
+            out.extend(c.to_uppercase());
+            cap = false;
+        } else {
+            out.push(c);
+        }
+    }
+    out
+}
