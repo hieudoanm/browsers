@@ -150,6 +150,83 @@ fn the_tool_list_is_sorted_and_complete() {
 }
 
 #[test]
+fn every_tool_declares_all_four_hints_with_expected_values() {
+    let responses = drive(
+        StubRenderer::new(),
+        &format!(
+            "{}\n",
+            json!({"jsonrpc":"2.0","id":1,"method":"tools/list"})
+        ),
+    );
+    let tools = responses[0]["result"]["tools"]
+        .as_array()
+        .expect("tools array");
+    for tool in tools {
+        let name = tool["name"].as_str().expect("name");
+        let annotations = &tool["annotations"];
+        for hint in [
+            "readOnlyHint",
+            "destructiveHint",
+            "idempotentHint",
+            "openWorldHint",
+        ] {
+            assert!(
+                annotations.get(hint).is_some_and(|v| v.is_boolean()),
+                "{name} missing boolean hint {hint}: {annotations}"
+            );
+        }
+    }
+
+    // scrape and screenshot navigate to a remote URL and run its scripts:
+    // mutating, non-idempotent, and open-world, but never destructive.
+    for name in ["browserverless_scrape", "browserverless_screenshot"] {
+        let tool = tools
+            .iter()
+            .find(|tool| tool["name"] == name)
+            .unwrap_or_else(|| panic!("{name} missing"));
+        assert_eq!(
+            tool["annotations"],
+            json!({
+                "readOnlyHint": false,
+                "destructiveHint": false,
+                "idempotentHint": false,
+                "openWorldHint": true,
+            }),
+            "{name} annotations"
+        );
+    }
+
+    // version is a pure local read.
+    let version = tools
+        .iter()
+        .find(|tool| tool["name"] == "browserverless_version")
+        .expect("version tool");
+    assert_eq!(
+        version["annotations"],
+        json!({
+            "readOnlyHint": true,
+            "destructiveHint": false,
+            "idempotentHint": true,
+            "openWorldHint": false,
+        })
+    );
+}
+
+#[test]
+fn annotations_serialize_with_camel_case_keys() {
+    let annotations = browsers_cli::mcp::tools::Annotations::new(true, false, true, false);
+    assert_eq!(
+        serde_json::to_value(annotations).expect("serialize"),
+        json!({
+            "readOnlyHint": true,
+            "destructiveHint": false,
+            "idempotentHint": true,
+            "openWorldHint": false,
+        })
+    );
+}
+
+#[test]
 fn scrape_returns_html_as_text() {
     let renderer = StubRenderer::new();
     let responses = drive(

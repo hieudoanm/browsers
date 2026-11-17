@@ -12,6 +12,44 @@ pub const TOOL_SCRAPE: &str = "browserverless_scrape";
 pub const TOOL_SCREENSHOT: &str = "browserverless_screenshot";
 pub const TOOL_VERSION: &str = "browserverless_version";
 
+/// Annotations are the four MCP tool hints hosts use to decide whether a call
+/// needs confirmation. Every tool declares all four explicitly so clients and
+/// directories that require them never have to guess.
+#[derive(Debug, Clone, Copy, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct Annotations {
+    pub read_only_hint: bool,
+    pub destructive_hint: bool,
+    pub idempotent_hint: bool,
+    pub open_world_hint: bool,
+}
+
+impl Annotations {
+    /// new builds the hint set in declaration order.
+    pub const fn new(
+        read_only_hint: bool,
+        destructive_hint: bool,
+        idempotent_hint: bool,
+        open_world_hint: bool,
+    ) -> Self {
+        Annotations {
+            read_only_hint,
+            destructive_hint,
+            idempotent_hint,
+            open_world_hint,
+        }
+    }
+}
+
+/// RENDER_ANNOTATIONS is shared by scrape and screenshot: the call navigates
+/// the browser to a remote URL and runs its scripts, so it is neither a pure
+/// read nor guaranteed side-effect-free, but it never deletes data and it can
+/// always reach the network.
+const RENDER_ANNOTATIONS: Annotations = Annotations::new(false, false, false, true);
+
+/// VERSION_ANNOTATIONS: reporting the binary version is a pure local read.
+const VERSION_ANNOTATIONS: Annotations = Annotations::new(true, false, true, false);
+
 /// Tool is one entry in the tools/list result.
 #[derive(Debug, Clone, Serialize)]
 pub struct Tool {
@@ -19,6 +57,7 @@ pub struct Tool {
     pub description: String,
     #[serde(rename = "inputSchema")]
     pub input_schema: Value,
+    pub annotations: Annotations,
 }
 
 /// scrape_tool renders a URL and returns its HTML.
@@ -34,6 +73,7 @@ pub fn scrape_tool() -> Tool {
             },
             "required": ["url"],
         }),
+        annotations: RENDER_ANNOTATIONS,
     }
 }
 
@@ -50,6 +90,7 @@ pub fn screenshot_tool() -> Tool {
             },
             "required": ["url"],
         }),
+        annotations: RENDER_ANNOTATIONS,
     }
 }
 
@@ -62,6 +103,7 @@ pub fn version_tool() -> Tool {
             "type": "object",
             "properties": {},
         }),
+        annotations: VERSION_ANNOTATIONS,
     }
 }
 
