@@ -3,8 +3,8 @@
   "tracersVersion": "0.0.1",
   "repository": {
     "id": "repository:.",
-    "name": "repository",
-    "root": ".",
+    "name": "browsers",
+    "root": "/Users/hieudoan/git/github.com/hieudoanm/browsers",
     "fileCount": 102,
     "languageCount": 23
   },
@@ -6556,25 +6556,7 @@
       "language": "rust"
     },
     {
-      "id": "external:rust:browsers_cli::mcp::tools::Annotations.new",
-      "kind": "external_symbol",
-      "name": "new",
-      "language": "rust"
-    },
-    {
-      "id": "external:rust:browsers_css::Specificity.new",
-      "kind": "external_symbol",
-      "name": "new",
-      "language": "rust"
-    },
-    {
       "id": "external:rust:browsers_headless::HeadlessBrowser.new",
-      "kind": "external_symbol",
-      "name": "new",
-      "language": "rust"
-    },
-    {
-      "id": "external:rust:browsers_layout::LayoutContext.new",
       "kind": "external_symbol",
       "name": "new",
       "language": "rust"
@@ -6595,12 +6577,6 @@
       "id": "external:rust:external:unresolved:std::fmt.Formatter",
       "kind": "external_symbol",
       "name": "Formatter",
-      "language": "rust"
-    },
-    {
-      "id": "external:rust:handlers::ServeRenderer.new",
-      "kind": "external_symbol",
-      "name": "new",
       "language": "rust"
     },
     {
@@ -7927,12 +7903,6 @@
       "id": "external:rust:tiny_http::Server::http.expect",
       "kind": "external_symbol",
       "name": "expect",
-      "language": "rust"
-    },
-    {
-      "id": "external:rust:transport::FrameReader.new",
-      "kind": "external_symbol",
-      "name": "new",
       "language": "rust"
     },
     {
@@ -28917,12 +28887,6 @@
       "language": "rust"
     },
     {
-      "id": "unresolved:rust:arguments_json",
-      "kind": "unknown",
-      "name": "arguments_json",
-      "language": "rust"
-    },
-    {
       "id": "unresolved:rust:as_array",
       "kind": "unknown",
       "name": "as_array",
@@ -28983,36 +28947,6 @@
       "language": "rust"
     },
     {
-      "id": "unresolved:rust:browsers_css::CssRule",
-      "kind": "unknown",
-      "name": "browsers_css::CssRule",
-      "language": "rust"
-    },
-    {
-      "id": "unresolved:rust:browsers_css::Selector",
-      "kind": "unknown",
-      "name": "browsers_css::Selector",
-      "language": "rust"
-    },
-    {
-      "id": "unresolved:rust:browsers_css::Specificity",
-      "kind": "unknown",
-      "name": "browsers_css::Specificity",
-      "language": "rust"
-    },
-    {
-      "id": "unresolved:rust:browsers_css::Stylesheet",
-      "kind": "unknown",
-      "name": "browsers_css::Stylesheet",
-      "language": "rust"
-    },
-    {
-      "id": "unresolved:rust:browsers_dom::NodeId",
-      "kind": "unknown",
-      "name": "browsers_dom::NodeId",
-      "language": "rust"
-    },
-    {
       "id": "unresolved:rust:browsers_headless::HeadlessBrowser",
       "kind": "unknown",
       "name": "browsers_headless::HeadlessBrowser",
@@ -29028,12 +28962,6 @@
       "id": "unresolved:rust:browsers_headless::HeadlessError",
       "kind": "unknown",
       "name": "browsers_headless::HeadlessError",
-      "language": "rust"
-    },
-    {
-      "id": "unresolved:rust:browsers_style::ComputedStyle",
-      "kind": "unknown",
-      "name": "browsers_style::ComputedStyle",
       "language": "rust"
     },
     {
@@ -29493,12 +29421,6 @@
       "language": "rust"
     },
     {
-      "id": "unresolved:rust:next_frame",
-      "kind": "unknown",
-      "name": "next_frame",
-      "language": "rust"
-    },
-    {
       "id": "unresolved:rust:notify_input_event",
       "kind": "unknown",
       "name": "notify_input_event",
@@ -29550,18 +29472,6 @@
       "id": "unresolved:rust:present",
       "kind": "unknown",
       "name": "present",
-      "language": "rust"
-    },
-    {
-      "id": "unresolved:rust:protocol::Response",
-      "kind": "unknown",
-      "name": "protocol::Response",
-      "language": "rust"
-    },
-    {
-      "id": "unresolved:rust:protocol::ToolCallParams",
-      "kind": "unknown",
-      "name": "protocol::ToolCallParams",
       "language": "rust"
     },
     {
@@ -69778,63 +69688,6 @@
     },
     {
       "source": "function:crates/browsers-cli/src/main.rs::main",
-      "target": "external:rust:browsers_headless::HeadlessBrowser.new",
-      "kind": "calls",
-      "status": "resolved_external",
-      "origin": "lexical",
-      "sites": [
-        {
-          "start": {
-            "line": 195,
-            "column": 27,
-            "byte": 4896
-          },
-          "end": {
-            "line": 195,
-            "column": 74,
-            "byte": 4943
-          }
-        },
-        {
-          "start": {
-            "line": 217,
-            "column": 27,
-            "byte": 5510
-          },
-          "end": {
-            "line": 217,
-            "column": 74,
-            "byte": 5557
-          }
-        },
-        {
-          "start": {
-            "line": 237,
-            "column": 27,
-            "byte": 6130
-          },
-          "end": {
-            "line": 237,
-            "column": 74,
-            "byte": 6177
-          }
-        },
-        {
-          "start": {
-            "line": 264,
-            "column": 27,
-            "byte": 6943
-          },
-          "end": {
-            "line": 264,
-            "column": 74,
-            "byte": 6990
-          }
-        }
-      ]
-    },
-    {
-      "source": "function:crates/browsers-cli/src/main.rs::main",
       "target": "external:rust:std::Ok",
       "kind": "calls",
       "status": "resolved_external",
@@ -70189,6 +70042,63 @@
     },
     {
       "source": "function:crates/browsers-cli/src/main.rs::main",
+      "target": "method:crates/browsers-headless/src/lib.rs::HeadlessBrowser.new",
+      "kind": "calls",
+      "status": "resolved_internal",
+      "origin": "lexical",
+      "sites": [
+        {
+          "start": {
+            "line": 195,
+            "column": 27,
+            "byte": 4896
+          },
+          "end": {
+            "line": 195,
+            "column": 74,
+            "byte": 4943
+          }
+        },
+        {
+          "start": {
+            "line": 217,
+            "column": 27,
+            "byte": 5510
+          },
+          "end": {
+            "line": 217,
+            "column": 74,
+            "byte": 5557
+          }
+        },
+        {
+          "start": {
+            "line": 237,
+            "column": 27,
+            "byte": 6130
+          },
+          "end": {
+            "line": 237,
+            "column": 74,
+            "byte": 6177
+          }
+        },
+        {
+          "start": {
+            "line": 264,
+            "column": 27,
+            "byte": 6943
+          },
+          "end": {
+            "line": 264,
+            "column": 74,
+            "byte": 6990
+          }
+        }
+      ]
+    },
+    {
+      "source": "function:crates/browsers-cli/src/main.rs::main",
       "target": "unresolved:rust:dump_html",
       "kind": "calls",
       "status": "unresolved",
@@ -70477,9 +70387,9 @@
     },
     {
       "source": "function:crates/browsers-cli/src/main.rs::main",
-      "target": "unresolved:rust:browsers_headless::HeadlessConfig",
+      "target": "struct:crates/browsers-headless/src/lib.rs::HeadlessConfig",
       "kind": "uses_type",
-      "status": "unresolved",
+      "status": "resolved_internal",
       "origin": "syntax",
       "sites": [
         {
@@ -71644,7 +71554,7 @@
     },
     {
       "source": "function:crates/browsers-cli/src/mcp/handlers.rs::parse_render_args",
-      "target": "external:rust:serde_json.Value",
+      "target": "external:rust:serde_json::Value",
       "kind": "uses_type",
       "status": "resolved_external",
       "origin": "syntax",
@@ -75457,27 +75367,6 @@
     },
     {
       "source": "function:crates/browsers-cli/src/mcp/mod.rs::run_http",
-      "target": "external:rust:handlers::ServeRenderer.new",
-      "kind": "calls",
-      "status": "resolved_external",
-      "origin": "lexical",
-      "sites": [
-        {
-          "start": {
-            "line": 48,
-            "column": 20,
-            "byte": 1670
-          },
-          "end": {
-            "line": 48,
-            "column": 75,
-            "byte": 1725
-          }
-        }
-      ]
-    },
-    {
-      "source": "function:crates/browsers-cli/src/mcp/mod.rs::run_http",
       "target": "external:rust:serde_json.to_string",
       "kind": "calls",
       "status": "resolved_external",
@@ -75535,6 +75424,27 @@
             "line": 55,
             "column": 58,
             "byte": 1999
+          }
+        }
+      ]
+    },
+    {
+      "source": "function:crates/browsers-cli/src/mcp/mod.rs::run_http",
+      "target": "method:crates/browsers-cli/src/mcp/handlers.rs::ServeRenderer.new",
+      "kind": "calls",
+      "status": "resolved_internal",
+      "origin": "lexical",
+      "sites": [
+        {
+          "start": {
+            "line": 48,
+            "column": 20,
+            "byte": 1670
+          },
+          "end": {
+            "line": 48,
+            "column": 75,
+            "byte": 1725
           }
         }
       ]
@@ -85159,27 +85069,6 @@
     },
     {
       "source": "function:crates/browsers-cli/tests/mcp.rs::annotations_serialize_with_camel_case_keys",
-      "target": "external:rust:browsers_cli::mcp::tools::Annotations.new",
-      "kind": "calls",
-      "status": "resolved_external",
-      "origin": "lexical",
-      "sites": [
-        {
-          "start": {
-            "line": 217,
-            "column": 23,
-            "byte": 6720
-          },
-          "end": {
-            "line": 217,
-            "column": 91,
-            "byte": 6788
-          }
-        }
-      ]
-    },
-    {
-      "source": "function:crates/browsers-cli/tests/mcp.rs::annotations_serialize_with_camel_case_keys",
       "target": "external:rust:std::assert_eq",
       "kind": "calls",
       "status": "resolved_external",
@@ -85195,6 +85084,27 @@
             "line": 226,
             "column": 6,
             "byte": 7045
+          }
+        }
+      ]
+    },
+    {
+      "source": "function:crates/browsers-cli/tests/mcp.rs::annotations_serialize_with_camel_case_keys",
+      "target": "method:crates/browsers-cli/src/mcp/tools.rs::Annotations.new",
+      "kind": "calls",
+      "status": "resolved_internal",
+      "origin": "lexical",
+      "sites": [
+        {
+          "start": {
+            "line": 217,
+            "column": 23,
+            "byte": 6720
+          },
+          "end": {
+            "line": 217,
+            "column": 91,
+            "byte": 6788
           }
         }
       ]
@@ -105205,6 +105115,27 @@
     },
     {
       "source": "function:crates/browsers-paint/src/lib.rs::draw_borders",
+      "target": "struct:crates/browsers-style/src/lib.rs::ComputedStyle",
+      "kind": "uses_type",
+      "status": "resolved_internal",
+      "origin": "syntax",
+      "sites": [
+        {
+          "start": {
+            "line": 123,
+            "column": 43,
+            "byte": 3037
+          },
+          "end": {
+            "line": 123,
+            "column": 72,
+            "byte": 3066
+          }
+        }
+      ]
+    },
+    {
+      "source": "function:crates/browsers-paint/src/lib.rs::draw_borders",
       "target": "unresolved:rust:DisplayCommand::FillRect",
       "kind": "uses_type",
       "status": "unresolved",
@@ -105261,27 +105192,6 @@
       ]
     },
     {
-      "source": "function:crates/browsers-paint/src/lib.rs::draw_borders",
-      "target": "unresolved:rust:browsers_style::ComputedStyle",
-      "kind": "uses_type",
-      "status": "unresolved",
-      "origin": "syntax",
-      "sites": [
-        {
-          "start": {
-            "line": 123,
-            "column": 43,
-            "byte": 3037
-          },
-          "end": {
-            "line": 123,
-            "column": 72,
-            "byte": 3066
-          }
-        }
-      ]
-    },
-    {
       "source": "function:crates/browsers-paint/src/lib.rs::tests.build_display_list_with_element",
       "target": "external:rust:Vec.new",
       "kind": "calls",
@@ -105298,27 +105208,6 @@
             "line": 210,
             "column": 33,
             "byte": 5660
-          }
-        }
-      ]
-    },
-    {
-      "source": "function:crates/browsers-paint/src/lib.rs::tests.build_display_list_with_element",
-      "target": "external:rust:browsers_layout::LayoutContext.new",
-      "kind": "calls",
-      "status": "resolved_external",
-      "origin": "lexical",
-      "sites": [
-        {
-          "start": {
-            "line": 214,
-            "column": 19,
-            "byte": 5744
-          },
-          "end": {
-            "line": 214,
-            "column": 68,
-            "byte": 5793
           }
         }
       ]
@@ -105430,6 +105319,27 @@
     },
     {
       "source": "function:crates/browsers-paint/src/lib.rs::tests.build_display_list_with_element",
+      "target": "method:crates/browsers-layout/src/lib.rs::LayoutContext.new",
+      "kind": "calls",
+      "status": "resolved_internal",
+      "origin": "lexical",
+      "sites": [
+        {
+          "start": {
+            "line": 214,
+            "column": 19,
+            "byte": 5744
+          },
+          "end": {
+            "line": 214,
+            "column": 68,
+            "byte": 5793
+          }
+        }
+      ]
+    },
+    {
+      "source": "function:crates/browsers-paint/src/lib.rs::tests.build_display_list_with_element",
       "target": "method:crates/browsers-layout/src/lib.rs::Rect.new",
       "kind": "calls",
       "status": "resolved_internal",
@@ -105514,27 +105424,6 @@
     },
     {
       "source": "function:crates/browsers-paint/src/lib.rs::tests.build_empty_display_list",
-      "target": "external:rust:browsers_layout::LayoutContext.new",
-      "kind": "calls",
-      "status": "resolved_external",
-      "origin": "lexical",
-      "sites": [
-        {
-          "start": {
-            "line": 195,
-            "column": 19,
-            "byte": 5158
-          },
-          "end": {
-            "line": 195,
-            "column": 68,
-            "byte": 5207
-          }
-        }
-      ]
-    },
-    {
-      "source": "function:crates/browsers-paint/src/lib.rs::tests.build_empty_display_list",
       "target": "external:rust:std::assert",
       "kind": "calls",
       "status": "resolved_external",
@@ -105592,6 +105481,27 @@
             "line": 193,
             "column": 29,
             "byte": 5096
+          }
+        }
+      ]
+    },
+    {
+      "source": "function:crates/browsers-paint/src/lib.rs::tests.build_empty_display_list",
+      "target": "method:crates/browsers-layout/src/lib.rs::LayoutContext.new",
+      "kind": "calls",
+      "status": "resolved_internal",
+      "origin": "lexical",
+      "sites": [
+        {
+          "start": {
+            "line": 195,
+            "column": 19,
+            "byte": 5158
+          },
+          "end": {
+            "line": 195,
+            "column": 68,
+            "byte": 5207
           }
         }
       ]
@@ -108833,27 +108743,6 @@
       "sites": [
         {
           "start": {
-            "line": 288,
-            "column": 9,
-            "byte": 10087
-          },
-          "end": {
-            "line": 288,
-            "column": 19,
-            "byte": 10097
-          }
-        }
-      ]
-    },
-    {
-      "source": "function:crates/browsers-style/src/lib.rs::tests.make_stylesheet",
-      "target": "unresolved:rust:browsers_css::Stylesheet",
-      "kind": "uses_type",
-      "status": "unresolved",
-      "origin": "syntax",
-      "sites": [
-        {
-          "start": {
             "line": 287,
             "column": 56,
             "byte": 10052
@@ -108862,6 +108751,18 @@
             "line": 287,
             "column": 80,
             "byte": 10076
+          }
+        },
+        {
+          "start": {
+            "line": 288,
+            "column": 9,
+            "byte": 10087
+          },
+          "end": {
+            "line": 288,
+            "column": 19,
+            "byte": 10097
           }
         }
       ]
@@ -116671,10 +116572,10 @@
     },
     {
       "source": "method:crates/browsers-cli/src/mcp/mod.rs::Server.call_response",
-      "target": "unresolved:rust:arguments_json",
+      "target": "method:crates/browsers-cli/src/mcp/protocol.rs::ToolCallParams.arguments_json",
       "kind": "calls",
-      "status": "unresolved",
-      "origin": "syntax",
+      "status": "resolved_internal",
+      "origin": "lexical",
       "sites": [
         {
           "start": {
@@ -116833,9 +116734,9 @@
     },
     {
       "source": "method:crates/browsers-cli/src/mcp/mod.rs::Server.call_response",
-      "target": "unresolved:rust:protocol::Response",
+      "target": "struct:crates/browsers-cli/src/mcp/protocol.rs::Response",
       "kind": "uses_type",
-      "status": "unresolved",
+      "status": "resolved_internal",
       "origin": "syntax",
       "sites": [
         {
@@ -116854,9 +116755,9 @@
     },
     {
       "source": "method:crates/browsers-cli/src/mcp/mod.rs::Server.call_response",
-      "target": "unresolved:rust:protocol::ToolCallParams",
+      "target": "struct:crates/browsers-cli/src/mcp/protocol.rs::ToolCallParams",
       "kind": "uses_type",
-      "status": "unresolved",
+      "status": "resolved_internal",
       "origin": "syntax",
       "sites": [
         {
@@ -117025,9 +116926,9 @@
     },
     {
       "source": "method:crates/browsers-cli/src/mcp/mod.rs::Server.register_tools",
-      "target": "external:rust:handlers::ServeRenderer.new",
+      "target": "method:crates/browsers-cli/src/mcp/handlers.rs::ServeRenderer.new",
       "kind": "calls",
-      "status": "resolved_external",
+      "status": "resolved_internal",
       "origin": "lexical",
       "sites": [
         {
@@ -117634,9 +117535,9 @@
     },
     {
       "source": "method:crates/browsers-cli/src/mcp/mod.rs::Server.response_for",
-      "target": "unresolved:rust:protocol::Response",
+      "target": "struct:crates/browsers-cli/src/mcp/protocol.rs::Response",
       "kind": "uses_type",
-      "status": "unresolved",
+      "status": "resolved_internal",
       "origin": "syntax",
       "sites": [
         {
@@ -117718,27 +117619,6 @@
     },
     {
       "source": "method:crates/browsers-cli/src/mcp/mod.rs::Server.serve",
-      "target": "external:rust:transport::FrameReader.new",
-      "kind": "calls",
-      "status": "resolved_external",
-      "origin": "lexical",
-      "sites": [
-        {
-          "start": {
-            "line": 152,
-            "column": 26,
-            "byte": 5509
-          },
-          "end": {
-            "line": 152,
-            "column": 68,
-            "byte": 5551
-          }
-        }
-      ]
-    },
-    {
-      "source": "method:crates/browsers-cli/src/mcp/mod.rs::Server.serve",
       "target": "method:crates/browsers-cli/src/mcp/mod.rs::Server.handle_message",
       "kind": "calls",
       "status": "resolved_internal",
@@ -117781,6 +117661,48 @@
     },
     {
       "source": "method:crates/browsers-cli/src/mcp/mod.rs::Server.serve",
+      "target": "method:crates/browsers-cli/src/mcp/transport.rs::FrameReader.new",
+      "kind": "calls",
+      "status": "resolved_internal",
+      "origin": "lexical",
+      "sites": [
+        {
+          "start": {
+            "line": 152,
+            "column": 26,
+            "byte": 5509
+          },
+          "end": {
+            "line": 152,
+            "column": 68,
+            "byte": 5551
+          }
+        }
+      ]
+    },
+    {
+      "source": "method:crates/browsers-cli/src/mcp/mod.rs::Server.serve",
+      "target": "method:crates/browsers-cli/src/mcp/transport.rs::FrameReader.next_frame",
+      "kind": "calls",
+      "status": "resolved_internal",
+      "origin": "lexical",
+      "sites": [
+        {
+          "start": {
+            "line": 154,
+            "column": 19,
+            "byte": 5586
+          },
+          "end": {
+            "line": 154,
+            "column": 38,
+            "byte": 5605
+          }
+        }
+      ]
+    },
+    {
+      "source": "method:crates/browsers-cli/src/mcp/mod.rs::Server.serve",
       "target": "unresolved:rust:as_bytes",
       "kind": "calls",
       "status": "unresolved",
@@ -117817,27 +117739,6 @@
             "line": 161,
             "column": 22,
             "byte": 5958
-          }
-        }
-      ]
-    },
-    {
-      "source": "method:crates/browsers-cli/src/mcp/mod.rs::Server.serve",
-      "target": "unresolved:rust:next_frame",
-      "kind": "calls",
-      "status": "unresolved",
-      "origin": "syntax",
-      "sites": [
-        {
-          "start": {
-            "line": 154,
-            "column": 19,
-            "byte": 5586
-          },
-          "end": {
-            "line": 154,
-            "column": 38,
-            "byte": 5605
           }
         }
       ]
@@ -118060,9 +117961,9 @@
     },
     {
       "source": "method:crates/browsers-cli/src/mcp/mod.rs::Server.write",
-      "target": "unresolved:rust:protocol::Response",
+      "target": "struct:crates/browsers-cli/src/mcp/protocol.rs::Response",
       "kind": "uses_type",
-      "status": "unresolved",
+      "status": "resolved_internal",
       "origin": "syntax",
       "sites": [
         {
@@ -132487,9 +132388,9 @@
     },
     {
       "source": "method:crates/browsers-html/src/lib.rs::DomSink.add_attrs_if_missing",
-      "target": "unresolved:rust:browsers_dom::NodeId",
+      "target": "type:crates/browsers-dom/src/lib.rs::NodeId",
       "kind": "uses_type",
-      "status": "unresolved",
+      "status": "resolved_internal",
       "origin": "syntax",
       "sites": [
         {
@@ -132667,9 +132568,9 @@
     },
     {
       "source": "method:crates/browsers-html/src/lib.rs::DomSink.append",
-      "target": "unresolved:rust:browsers_dom::NodeId",
+      "target": "type:crates/browsers-dom/src/lib.rs::NodeId",
       "kind": "uses_type",
-      "status": "unresolved",
+      "status": "resolved_internal",
       "origin": "syntax",
       "sites": [
         {
@@ -132742,9 +132643,9 @@
     },
     {
       "source": "method:crates/browsers-html/src/lib.rs::DomSink.append_based_on_parent_node",
-      "target": "unresolved:rust:browsers_dom::NodeId",
+      "target": "type:crates/browsers-dom/src/lib.rs::NodeId",
       "kind": "uses_type",
-      "status": "unresolved",
+      "status": "resolved_internal",
       "origin": "syntax",
       "sites": [
         {
@@ -132808,9 +132709,9 @@
     },
     {
       "source": "method:crates/browsers-html/src/lib.rs::DomSink.append_before_sibling",
-      "target": "unresolved:rust:browsers_dom::NodeId",
+      "target": "type:crates/browsers-dom/src/lib.rs::NodeId",
       "kind": "uses_type",
-      "status": "unresolved",
+      "status": "resolved_internal",
       "origin": "syntax",
       "sites": [
         {
@@ -132949,9 +132850,9 @@
     },
     {
       "source": "method:crates/browsers-html/src/lib.rs::DomSink.create_comment",
-      "target": "unresolved:rust:browsers_dom::NodeId",
+      "target": "type:crates/browsers-dom/src/lib.rs::NodeId",
       "kind": "uses_type",
-      "status": "unresolved",
+      "status": "resolved_internal",
       "origin": "syntax",
       "sites": [
         {
@@ -133162,9 +133063,9 @@
     },
     {
       "source": "method:crates/browsers-html/src/lib.rs::DomSink.create_element",
-      "target": "unresolved:rust:browsers_dom::NodeId",
+      "target": "type:crates/browsers-dom/src/lib.rs::NodeId",
       "kind": "uses_type",
-      "status": "unresolved",
+      "status": "resolved_internal",
       "origin": "syntax",
       "sites": [
         {
@@ -133258,9 +133159,9 @@
     },
     {
       "source": "method:crates/browsers-html/src/lib.rs::DomSink.create_pi",
-      "target": "unresolved:rust:browsers_dom::NodeId",
+      "target": "type:crates/browsers-dom/src/lib.rs::NodeId",
       "kind": "uses_type",
-      "status": "unresolved",
+      "status": "resolved_internal",
       "origin": "syntax",
       "sites": [
         {
@@ -133438,9 +133339,9 @@
     },
     {
       "source": "method:crates/browsers-html/src/lib.rs::DomSink.elem_name",
-      "target": "unresolved:rust:browsers_dom::NodeId",
+      "target": "type:crates/browsers-dom/src/lib.rs::NodeId",
       "kind": "uses_type",
-      "status": "unresolved",
+      "status": "resolved_internal",
       "origin": "syntax",
       "sites": [
         {
@@ -133501,9 +133402,9 @@
     },
     {
       "source": "method:crates/browsers-html/src/lib.rs::DomSink.get_document",
-      "target": "unresolved:rust:browsers_dom::NodeId",
+      "target": "type:crates/browsers-dom/src/lib.rs::NodeId",
       "kind": "uses_type",
-      "status": "unresolved",
+      "status": "resolved_internal",
       "origin": "syntax",
       "sites": [
         {
@@ -133522,9 +133423,9 @@
     },
     {
       "source": "method:crates/browsers-html/src/lib.rs::DomSink.get_template_contents",
-      "target": "unresolved:rust:browsers_dom::NodeId",
+      "target": "type:crates/browsers-dom/src/lib.rs::NodeId",
       "kind": "uses_type",
-      "status": "unresolved",
+      "status": "resolved_internal",
       "origin": "syntax",
       "sites": [
         {
@@ -133660,9 +133561,9 @@
     },
     {
       "source": "method:crates/browsers-html/src/lib.rs::DomSink.remove_from_parent",
-      "target": "unresolved:rust:browsers_dom::NodeId",
+      "target": "type:crates/browsers-dom/src/lib.rs::NodeId",
       "kind": "uses_type",
-      "status": "unresolved",
+      "status": "resolved_internal",
       "origin": "syntax",
       "sites": [
         {
@@ -133681,9 +133582,9 @@
     },
     {
       "source": "method:crates/browsers-html/src/lib.rs::DomSink.reparent_children",
-      "target": "unresolved:rust:browsers_dom::NodeId",
+      "target": "type:crates/browsers-dom/src/lib.rs::NodeId",
       "kind": "uses_type",
-      "status": "unresolved",
+      "status": "resolved_internal",
       "origin": "syntax",
       "sites": [
         {
@@ -133714,9 +133615,9 @@
     },
     {
       "source": "method:crates/browsers-html/src/lib.rs::DomSink.same_node",
-      "target": "unresolved:rust:browsers_dom::NodeId",
+      "target": "type:crates/browsers-dom/src/lib.rs::NodeId",
       "kind": "uses_type",
-      "status": "unresolved",
+      "status": "resolved_internal",
       "origin": "syntax",
       "sites": [
         {
@@ -138217,6 +138118,27 @@
     },
     {
       "source": "method:crates/browsers-style/src/lib.rs::StyleContext.compute",
+      "target": "struct:crates/browsers-css/src/lib.rs::Stylesheet",
+      "kind": "uses_type",
+      "status": "resolved_internal",
+      "origin": "syntax",
+      "sites": [
+        {
+          "start": {
+            "line": 103,
+            "column": 55,
+            "byte": 3153
+          },
+          "end": {
+            "line": 103,
+            "column": 79,
+            "byte": 3177
+          }
+        }
+      ]
+    },
+    {
+      "source": "method:crates/browsers-style/src/lib.rs::StyleContext.compute",
       "target": "struct:crates/browsers-dom/src/lib.rs::Dom",
       "kind": "uses_type",
       "status": "resolved_internal",
@@ -138232,27 +138154,6 @@
             "line": 103,
             "column": 40,
             "byte": 3138
-          }
-        }
-      ]
-    },
-    {
-      "source": "method:crates/browsers-style/src/lib.rs::StyleContext.compute",
-      "target": "unresolved:rust:browsers_css::Stylesheet",
-      "kind": "uses_type",
-      "status": "unresolved",
-      "origin": "syntax",
-      "sites": [
-        {
-          "start": {
-            "line": 103,
-            "column": 55,
-            "byte": 3153
-          },
-          "end": {
-            "line": 103,
-            "column": 79,
-            "byte": 3177
           }
         }
       ]
@@ -138274,27 +138175,6 @@
             "line": 117,
             "column": 102,
             "byte": 3661
-          }
-        }
-      ]
-    },
-    {
-      "source": "method:crates/browsers-style/src/lib.rs::StyleContext.compute_node",
-      "target": "external:rust:browsers_css::Specificity.new",
-      "kind": "calls",
-      "status": "resolved_external",
-      "origin": "lexical",
-      "sites": [
-        {
-          "start": {
-            "line": 125,
-            "column": 32,
-            "byte": 3975
-          },
-          "end": {
-            "line": 125,
-            "column": 71,
-            "byte": 4014
           }
         }
       ]
@@ -138490,6 +138370,27 @@
     },
     {
       "source": "method:crates/browsers-style/src/lib.rs::StyleContext.compute_node",
+      "target": "method:crates/browsers-css/src/lib.rs::Specificity.new",
+      "kind": "calls",
+      "status": "resolved_internal",
+      "origin": "lexical",
+      "sites": [
+        {
+          "start": {
+            "line": 125,
+            "column": 32,
+            "byte": 3975
+          },
+          "end": {
+            "line": 125,
+            "column": 71,
+            "byte": 4014
+          }
+        }
+      ]
+    },
+    {
+      "source": "method:crates/browsers-style/src/lib.rs::StyleContext.compute_node",
       "target": "method:crates/browsers-dom/src/lib.rs::Dom.attribute",
       "kind": "calls",
       "status": "resolved_internal",
@@ -138670,6 +138571,69 @@
     },
     {
       "source": "method:crates/browsers-style/src/lib.rs::StyleContext.compute_node",
+      "target": "struct:crates/browsers-css/src/lib.rs::CssRule",
+      "kind": "uses_type",
+      "status": "resolved_internal",
+      "origin": "syntax",
+      "sites": [
+        {
+          "start": {
+            "line": 117,
+            "column": 66,
+            "byte": 3625
+          },
+          "end": {
+            "line": 117,
+            "column": 87,
+            "byte": 3646
+          }
+        }
+      ]
+    },
+    {
+      "source": "method:crates/browsers-style/src/lib.rs::StyleContext.compute_node",
+      "target": "struct:crates/browsers-css/src/lib.rs::Specificity",
+      "kind": "uses_type",
+      "status": "resolved_internal",
+      "origin": "syntax",
+      "sites": [
+        {
+          "start": {
+            "line": 117,
+            "column": 38,
+            "byte": 3597
+          },
+          "end": {
+            "line": 117,
+            "column": 63,
+            "byte": 3622
+          }
+        }
+      ]
+    },
+    {
+      "source": "method:crates/browsers-style/src/lib.rs::StyleContext.compute_node",
+      "target": "struct:crates/browsers-css/src/lib.rs::Stylesheet",
+      "kind": "uses_type",
+      "status": "resolved_internal",
+      "origin": "syntax",
+      "sites": [
+        {
+          "start": {
+            "line": 111,
+            "column": 22,
+            "byte": 3376
+          },
+          "end": {
+            "line": 111,
+            "column": 46,
+            "byte": 3400
+          }
+        }
+      ]
+    },
+    {
+      "source": "method:crates/browsers-style/src/lib.rs::StyleContext.compute_node",
       "target": "struct:crates/browsers-dom/src/lib.rs::Dom",
       "kind": "uses_type",
       "status": "resolved_internal",
@@ -138727,69 +138691,6 @@
             "line": 110,
             "column": 24,
             "byte": 3353
-          }
-        }
-      ]
-    },
-    {
-      "source": "method:crates/browsers-style/src/lib.rs::StyleContext.compute_node",
-      "target": "unresolved:rust:browsers_css::CssRule",
-      "kind": "uses_type",
-      "status": "unresolved",
-      "origin": "syntax",
-      "sites": [
-        {
-          "start": {
-            "line": 117,
-            "column": 66,
-            "byte": 3625
-          },
-          "end": {
-            "line": 117,
-            "column": 87,
-            "byte": 3646
-          }
-        }
-      ]
-    },
-    {
-      "source": "method:crates/browsers-style/src/lib.rs::StyleContext.compute_node",
-      "target": "unresolved:rust:browsers_css::Specificity",
-      "kind": "uses_type",
-      "status": "unresolved",
-      "origin": "syntax",
-      "sites": [
-        {
-          "start": {
-            "line": 117,
-            "column": 38,
-            "byte": 3597
-          },
-          "end": {
-            "line": 117,
-            "column": 63,
-            "byte": 3622
-          }
-        }
-      ]
-    },
-    {
-      "source": "method:crates/browsers-style/src/lib.rs::StyleContext.compute_node",
-      "target": "unresolved:rust:browsers_css::Stylesheet",
-      "kind": "uses_type",
-      "status": "unresolved",
-      "origin": "syntax",
-      "sites": [
-        {
-          "start": {
-            "line": 111,
-            "column": 22,
-            "byte": 3376
-          },
-          "end": {
-            "line": 111,
-            "column": 46,
-            "byte": 3400
           }
         }
       ]
@@ -138967,6 +138868,27 @@
     },
     {
       "source": "method:crates/browsers-style/src/lib.rs::StyleContext.matches_last_part",
+      "target": "struct:crates/browsers-css/src/lib.rs::Selector",
+      "kind": "uses_type",
+      "status": "resolved_internal",
+      "origin": "syntax",
+      "sites": [
+        {
+          "start": {
+            "line": 175,
+            "column": 20,
+            "byte": 5561
+          },
+          "end": {
+            "line": 175,
+            "column": 42,
+            "byte": 5583
+          }
+        }
+      ]
+    },
+    {
+      "source": "method:crates/browsers-style/src/lib.rs::StyleContext.matches_last_part",
       "target": "struct:crates/browsers-dom/src/lib.rs::Dom",
       "kind": "uses_type",
       "status": "resolved_internal",
@@ -139003,27 +138925,6 @@
             "line": 177,
             "column": 24,
             "byte": 5633
-          }
-        }
-      ]
-    },
-    {
-      "source": "method:crates/browsers-style/src/lib.rs::StyleContext.matches_last_part",
-      "target": "unresolved:rust:browsers_css::Selector",
-      "kind": "uses_type",
-      "status": "unresolved",
-      "origin": "syntax",
-      "sites": [
-        {
-          "start": {
-            "line": 175,
-            "column": 20,
-            "byte": 5561
-          },
-          "end": {
-            "line": 175,
-            "column": 42,
-            "byte": 5583
           }
         }
       ]
@@ -139351,6 +139252,27 @@
     },
     {
       "source": "method:crates/browsers-style/src/lib.rs::StyleContext.matches_selector",
+      "target": "struct:crates/browsers-css/src/lib.rs::Selector",
+      "kind": "uses_type",
+      "status": "resolved_internal",
+      "origin": "syntax",
+      "sites": [
+        {
+          "start": {
+            "line": 154,
+            "column": 56,
+            "byte": 5000
+          },
+          "end": {
+            "line": 154,
+            "column": 78,
+            "byte": 5022
+          }
+        }
+      ]
+    },
+    {
+      "source": "method:crates/browsers-style/src/lib.rs::StyleContext.matches_selector",
       "target": "struct:crates/browsers-dom/src/lib.rs::Dom",
       "kind": "uses_type",
       "status": "resolved_internal",
@@ -139387,27 +139309,6 @@
             "line": 154,
             "column": 96,
             "byte": 5040
-          }
-        }
-      ]
-    },
-    {
-      "source": "method:crates/browsers-style/src/lib.rs::StyleContext.matches_selector",
-      "target": "unresolved:rust:browsers_css::Selector",
-      "kind": "uses_type",
-      "status": "unresolved",
-      "origin": "syntax",
-      "sites": [
-        {
-          "start": {
-            "line": 154,
-            "column": 56,
-            "byte": 5000
-          },
-          "end": {
-            "line": 154,
-            "column": 78,
-            "byte": 5022
           }
         }
       ]
@@ -139477,6 +139378,27 @@
     },
     {
       "source": "method:crates/browsers-style/src/lib.rs::StyleContext.matches_single_selector",
+      "target": "struct:crates/browsers-css/src/lib.rs::Selector",
+      "kind": "uses_type",
+      "status": "resolved_internal",
+      "origin": "syntax",
+      "sites": [
+        {
+          "start": {
+            "line": 163,
+            "column": 20,
+            "byte": 5254
+          },
+          "end": {
+            "line": 163,
+            "column": 42,
+            "byte": 5276
+          }
+        }
+      ]
+    },
+    {
+      "source": "method:crates/browsers-style/src/lib.rs::StyleContext.matches_single_selector",
       "target": "struct:crates/browsers-dom/src/lib.rs::Dom",
       "kind": "uses_type",
       "status": "resolved_internal",
@@ -139513,27 +139435,6 @@
             "line": 164,
             "column": 24,
             "byte": 5301
-          }
-        }
-      ]
-    },
-    {
-      "source": "method:crates/browsers-style/src/lib.rs::StyleContext.matches_single_selector",
-      "target": "unresolved:rust:browsers_css::Selector",
-      "kind": "uses_type",
-      "status": "unresolved",
-      "origin": "syntax",
-      "sites": [
-        {
-          "start": {
-            "line": 163,
-            "column": 20,
-            "byte": 5254
-          },
-          "end": {
-            "line": 163,
-            "column": 42,
-            "byte": 5276
           }
         }
       ]
@@ -148739,9 +148640,9 @@
     },
     {
       "source": "module:crates/browsers-html/src/lib.rs",
-      "target": "unresolved:rust:browsers_dom::NodeId",
+      "target": "type:crates/browsers-dom/src/lib.rs::NodeId",
       "kind": "uses_type",
-      "status": "unresolved",
+      "status": "resolved_internal",
       "origin": "syntax",
       "sites": [
         {
@@ -159227,15 +159128,15 @@
   "statistics": {
     "files": 102,
     "packages": 2,
-    "nodes": 2769,
-    "edges": 7773,
+    "nodes": 2754,
+    "edges": 7772,
     "symbols": 1910,
-    "unresolvedEdges": 405,
+    "unresolvedEdges": 375,
     "diagnostics": 4,
     "byNodeKind": {
       "constant": 245,
       "enum": 24,
-      "external_symbol": 418,
+      "external_symbol": 413,
       "file": 102,
       "framework": 11,
       "function": 283,
@@ -159248,7 +159149,7 @@
       "struct": 59,
       "trait": 1,
       "type": 7,
-      "unknown": 197,
+      "unknown": 187,
       "variable": 818
     },
     "byEdgeKind": {
@@ -159260,20 +159161,20 @@
       "imports": 142,
       "inherits": 1,
       "uses_framework": 11,
-      "uses_type": 634
+      "uses_type": 633
     },
     "byLanguage": {
       "bash": 4,
       "javascript": 10,
       "markdown": 99,
-      "rust": 2257,
+      "rust": 2242,
       "tsx": 262,
       "typescript": 123
     },
     "byStatus": {
-      "resolved_external": 1666,
-      "resolved_internal": 5702,
-      "unresolved": 405
+      "resolved_external": 1658,
+      "resolved_internal": 5739,
+      "unresolved": 375
     },
     "byFramework": {
       "clap.rs": 1,
