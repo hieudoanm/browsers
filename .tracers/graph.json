@@ -137,6 +137,20 @@
       "displayName": "clap.rs",
       "family": "rust",
       "version": null,
+      "confidence": "high"
+    },
+    {
+      "name": "image",
+      "displayName": "image",
+      "family": "rust",
+      "version": null,
+      "confidence": "high"
+    },
+    {
+      "name": "log",
+      "displayName": "log",
+      "family": "rust",
+      "version": null,
       "confidence": "medium"
     },
     {
@@ -152,6 +166,48 @@
       "family": "ecmascript",
       "version": "tailwindcss",
       "confidence": "high"
+    },
+    {
+      "name": "reqwest",
+      "displayName": "reqwest",
+      "family": "rust",
+      "version": null,
+      "confidence": "medium"
+    },
+    {
+      "name": "serde",
+      "displayName": "Serde",
+      "family": "rust",
+      "version": null,
+      "confidence": "high"
+    },
+    {
+      "name": "tailwindcss",
+      "displayName": "Tailwind CSS",
+      "family": "ecmascript",
+      "version": "tailwindcss",
+      "confidence": "medium"
+    },
+    {
+      "name": "thiserror",
+      "displayName": "thiserror",
+      "family": "rust",
+      "version": null,
+      "confidence": "medium"
+    },
+    {
+      "name": "tracing",
+      "displayName": "tracing",
+      "family": "rust",
+      "version": null,
+      "confidence": "high"
+    },
+    {
+      "name": "turborepo",
+      "displayName": "Turborepo",
+      "family": "ecmascript",
+      "version": "commitlint",
+      "confidence": "medium"
     }
   ],
   "nodes": [
@@ -7934,9 +7990,29 @@
       "kind": "framework",
       "name": "clap.rs",
       "metadata": {
-        "confidence": "medium",
+        "confidence": "high",
         "family": "rust",
         "framework": "clap.rs"
+      }
+    },
+    {
+      "id": "framework:image",
+      "kind": "framework",
+      "name": "image",
+      "metadata": {
+        "confidence": "high",
+        "family": "rust",
+        "framework": "image"
+      }
+    },
+    {
+      "id": "framework:log",
+      "kind": "framework",
+      "name": "log",
+      "metadata": {
+        "confidence": "medium",
+        "family": "rust",
+        "framework": "log"
       }
     },
     {
@@ -7957,6 +8033,66 @@
         "confidence": "high",
         "family": "ecmascript",
         "framework": "react"
+      }
+    },
+    {
+      "id": "framework:reqwest",
+      "kind": "framework",
+      "name": "reqwest",
+      "metadata": {
+        "confidence": "medium",
+        "family": "rust",
+        "framework": "reqwest"
+      }
+    },
+    {
+      "id": "framework:serde",
+      "kind": "framework",
+      "name": "Serde",
+      "metadata": {
+        "confidence": "high",
+        "family": "rust",
+        "framework": "serde"
+      }
+    },
+    {
+      "id": "framework:tailwindcss:tailwindcss",
+      "kind": "framework",
+      "name": "Tailwind CSS",
+      "metadata": {
+        "confidence": "medium",
+        "family": "ecmascript",
+        "framework": "tailwindcss"
+      }
+    },
+    {
+      "id": "framework:thiserror",
+      "kind": "framework",
+      "name": "thiserror",
+      "metadata": {
+        "confidence": "medium",
+        "family": "rust",
+        "framework": "thiserror"
+      }
+    },
+    {
+      "id": "framework:tracing",
+      "kind": "framework",
+      "name": "tracing",
+      "metadata": {
+        "confidence": "high",
+        "family": "rust",
+        "framework": "tracing"
+      }
+    },
+    {
+      "id": "framework:turborepo:commitlint",
+      "kind": "framework",
+      "name": "Turborepo",
+      "metadata": {
+        "confidence": "medium",
+        "family": "ecmascript",
+        "framework": "turborepo"
       }
     },
     {
@@ -157217,6 +157353,20 @@
     },
     {
       "source": "repository:.",
+      "target": "framework:image",
+      "kind": "uses_framework",
+      "status": "resolved_internal",
+      "origin": "syntax"
+    },
+    {
+      "source": "repository:.",
+      "target": "framework:log",
+      "kind": "uses_framework",
+      "status": "resolved_internal",
+      "origin": "syntax"
+    },
+    {
+      "source": "repository:.",
       "target": "framework:nextjs:tailwindcss",
       "kind": "uses_framework",
       "status": "resolved_internal",
@@ -157225,6 +157375,48 @@
     {
       "source": "repository:.",
       "target": "framework:react:tailwindcss",
+      "kind": "uses_framework",
+      "status": "resolved_internal",
+      "origin": "syntax"
+    },
+    {
+      "source": "repository:.",
+      "target": "framework:reqwest",
+      "kind": "uses_framework",
+      "status": "resolved_internal",
+      "origin": "syntax"
+    },
+    {
+      "source": "repository:.",
+      "target": "framework:serde",
+      "kind": "uses_framework",
+      "status": "resolved_internal",
+      "origin": "syntax"
+    },
+    {
+      "source": "repository:.",
+      "target": "framework:tailwindcss:tailwindcss",
+      "kind": "uses_framework",
+      "status": "resolved_internal",
+      "origin": "syntax"
+    },
+    {
+      "source": "repository:.",
+      "target": "framework:thiserror",
+      "kind": "uses_framework",
+      "status": "resolved_internal",
+      "origin": "syntax"
+    },
+    {
+      "source": "repository:.",
+      "target": "framework:tracing",
+      "kind": "uses_framework",
+      "status": "resolved_internal",
+      "origin": "syntax"
+    },
+    {
+      "source": "repository:.",
+      "target": "framework:turborepo:commitlint",
       "kind": "uses_framework",
       "status": "resolved_internal",
       "origin": "syntax"
@@ -160657,8 +160849,8 @@
   "statistics": {
     "files": 102,
     "packages": 2,
-    "nodes": 2894,
-    "edges": 7704,
+    "nodes": 2902,
+    "edges": 7712,
     "symbols": 1897,
     "unresolvedEdges": 1976,
     "diagnostics": 41,
@@ -160667,7 +160859,7 @@
       "enum": 24,
       "external_symbol": 238,
       "file": 102,
-      "framework": 3,
+      "framework": 11,
       "function": 283,
       "interface": 21,
       "method": 195,
@@ -160689,7 +160881,7 @@
       "implements": 22,
       "imports": 157,
       "inherits": 1,
-      "uses_framework": 3,
+      "uses_framework": 11,
       "uses_type": 639
     },
     "byLanguage": {
@@ -160702,13 +160894,21 @@
     },
     "byStatus": {
       "resolved_external": 559,
-      "resolved_internal": 5169,
+      "resolved_internal": 5177,
       "unresolved": 1976
     },
     "byFramework": {
       "clap.rs": 1,
+      "image": 1,
+      "log": 1,
       "nextjs": 1,
-      "react": 1
+      "react": 1,
+      "reqwest": 1,
+      "serde": 1,
+      "tailwindcss": 1,
+      "thiserror": 1,
+      "tracing": 1,
+      "turborepo": 1
     }
   }
 }
