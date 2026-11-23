@@ -224,11 +224,8 @@ const HomePage: NextPage = () => (
     <CTA
       title="Ready to render?"
       description="One command turns any URL into a screenshot, markup, or an MCP tool call."
-      primary={{ label: 'View on GitHub', href: GITHUB, external: true }}
-      secondary={{
-        label: 'Browse the docs',
-        href: '/docs',
-      }}
+      primary={{ label: 'Download', href: '/downloads/' }}
+      secondary={{ label: 'View Docs', href: '/docs/' }}
     />
   </main>
 );
