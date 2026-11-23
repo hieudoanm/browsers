@@ -1,7 +1,13 @@
 import type { Metadata } from 'next';
 import type { FC, ReactNode } from 'react';
 import type { IconType } from 'react-icons';
-import { FaApple, FaDownload, FaLinux, FaTerminal } from 'react-icons/fa';
+import {
+  FaApple,
+  FaBrain,
+  FaDownload,
+  FaLinux,
+  FaTerminal,
+} from 'react-icons/fa';
 
 export const metadata: Metadata = {
   title: 'Downloads',
@@ -58,6 +64,8 @@ const CLI: Cell[] = [
     ],
   },
 ];
+
+const MODELS: Cell[] = [];
 
 function Section({
   icon: Icon,
@@ -135,6 +143,12 @@ const Downloads: FC = () => (
         <Section icon={FaTerminal} title="CLI">
           <CardGrid cells={CLI} cols="lg:grid-cols-4" />
         </Section>
+
+        {MODELS.length > 0 && (
+          <Section icon={FaBrain} title="Models">
+            <CardGrid cells={MODELS} cols="lg:grid-cols-3" />
+          </Section>
+        )}
 
         <p className="text-base-content/60 mt-8 text-center text-sm">
           Or build from source:{' '}
