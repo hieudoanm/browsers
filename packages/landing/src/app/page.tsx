@@ -6,13 +6,13 @@ import Hero from '@/components/molecules/Hero';
 import SectionHead from '@/components/molecules/SectionHead';
 import Terminal from '@/components/molecules/Terminal';
 import {
-  LuCamera,
-  LuFileText,
-  LuGlobe,
-  LuLayoutGrid,
-  LuPlug,
-  LuSquareTerminal,
-} from 'react-icons/lu';
+  PiCamera,
+  PiFileText,
+  PiGlobe,
+  PiGridFour,
+  PiTerminal,
+  PiPlug,
+} from 'react-icons/pi';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/' },
@@ -22,32 +22,32 @@ const GITHUB = 'https://github.com/hieudoanm/browsers';
 
 const FEATURES: Feature[] = [
   {
-    icon: LuGlobe,
+    icon: PiGlobe,
     title: 'Real browser engine',
     body: 'Built on Servo — the same parallel browser engine Firefox is based on. Full HTML, CSS, and JavaScript support with no Chromium or WebKit dependency.',
   },
   {
-    icon: LuCamera,
+    icon: PiCamera,
     title: 'Headless screenshots',
     body: 'Render any URL to a PNG entirely offscreen. No window, no desktop session, no monitor — safe for CI and servers.',
   },
   {
-    icon: LuFileText,
+    icon: PiFileText,
     title: 'Scrape to clean HTML',
     body: 'Extract the fully rendered DOM of a page after JavaScript execution, with final URL, title, and load status attached.',
   },
   {
-    icon: LuSquareTerminal,
+    icon: PiTerminal,
     title: 'One static binary',
     body: 'A single Rust binary covers the CLI, the HTTP server, and the MCP server. Cross-compiled releases for Linux and macOS.',
   },
   {
-    icon: LuPlug,
+    icon: PiPlug,
     title: 'HTTP API + MCP',
     body: 'Serve /api/v1/screenshot and /api/v1/scrape over HTTP, or plug the same engine into AI agents over Model Context Protocol on stdio.',
   },
   {
-    icon: LuLayoutGrid,
+    icon: PiGridFour,
     title: 'Headed mode too',
     body: 'The same codebase opens an interactive desktop window via winit when you need to see the page, not just capture it.',
   },
