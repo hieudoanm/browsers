@@ -122,6 +122,8 @@ const Downloads: FC = () => (
           </h1>
           <p className="mt-3 text-lg text-gray-500">
             Prebuilt binaries for headless screenshots, scraping, and MCP tools.
+          </p>
+          <p className="mt-3 text-lg text-gray-500">
             Assets are in the{' '}
             <a href={RELEASE_PAGE} className="text-primary">
               latest release
