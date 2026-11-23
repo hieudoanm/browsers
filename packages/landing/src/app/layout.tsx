@@ -9,14 +9,14 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 const GITHUB = 'https://github.com/hieudoanm/browsers';
-const BASE =
-  process.env.NODE_ENV === 'production' ? '/browsers' : '';
+const BASE = process.env.NODE_ENV === 'production' ? '/browsers' : '';
 const LOGO = `${BASE}/logo.svg`;
 
 const NAV_LINKS = [
   { label: 'Features', href: '#features' },
   { label: 'Demo', href: '#demo' },
   { label: 'Install', href: '#install' },
+  { label: 'Downloads', href: '/downloads/' },
 ];
 
 const DESCRIPTION =
@@ -55,7 +55,6 @@ export const metadata: Metadata = {
   },
 };
 
-
 const JSON_LD = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -63,18 +62,20 @@ const JSON_LD = {
       '@type': 'WebSite',
       name: 'browserverless',
       url: 'https://hieudoanm.github.io/browsers/',
-      description: 'A Servo-powered browser runtime as a library, a CLI, and an HTTP server — headless screenshots, scraping, and MCP tools from one Rust binary.',
+      description:
+        'A Servo-powered browser runtime as a library, a CLI, and an HTTP server — headless screenshots, scraping, and MCP tools from one Rust binary.',
     },
     {
       '@type': 'SoftwareApplication',
       name: 'browserverless',
       applicationCategory: 'UtilitiesApplication',
-      description: 'A Servo-powered browser runtime as a library, a CLI, and an HTTP server — headless screenshots, scraping, and MCP tools from one Rust binary.',
+      description:
+        'A Servo-powered browser runtime as a library, a CLI, and an HTTP server — headless screenshots, scraping, and MCP tools from one Rust binary.',
       url: 'https://hieudoanm.github.io/browsers/',
       codeRepository: 'https://github.com/hieudoanm/browsers',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
-  ]
+  ],
 };
 
 interface RootLayoutProps {
