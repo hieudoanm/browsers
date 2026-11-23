@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import type { FC } from 'react';
+import type { FC, ReactNode } from 'react';
 import type { IconType } from 'react-icons';
-import { FaApple, FaDownload, FaLinux } from 'react-icons/fa';
+import { FaApple, FaDownload, FaLinux, FaTerminal } from 'react-icons/fa';
 
 export const metadata: Metadata = {
   title: 'Downloads',
@@ -14,16 +14,23 @@ const GITHUB = 'https://github.com/hieudoanm/browsers';
 const RELEASES = `${GITHUB}/releases/latest/download`;
 const RELEASE_PAGE = `${GITHUB}/releases/latest`;
 
-interface Platform {
-  name: string;
-  icon: IconType;
-  assets: { label: string; href: string }[];
+interface Asset {
+  label: string;
+  href: string;
 }
 
-const PLATFORMS: Platform[] = [
+interface Cell {
+  name: string;
+  icon: IconType;
+  desc: string;
+  assets: Asset[];
+}
+
+const CLI: Cell[] = [
   {
-    name: 'macOS',
+    name: 'macOS (Silicon)',
     icon: FaApple,
+    desc: 'Apple Silicon Macs — M1 and later.',
     assets: [
       {
         label: 'Apple Silicon',
@@ -32,8 +39,17 @@ const PLATFORMS: Platform[] = [
     ],
   },
   {
+    name: 'macOS (Intel)',
+    icon: FaApple,
+    desc: 'Intel-based Macs.',
+    assets: [
+      { label: 'Intel', href: `${RELEASES}/cli-browsers-x86_64-apple-darwin` },
+    ],
+  },
+  {
     name: 'Linux',
     icon: FaLinux,
+    desc: 'x86_64 GNU/Linux distributions.',
     assets: [
       {
         label: 'x86_64',
@@ -42,6 +58,61 @@ const PLATFORMS: Platform[] = [
     ],
   },
 ];
+
+function Section({
+  icon: Icon,
+  title,
+  children,
+}: {
+  icon: IconType;
+  title: string;
+  children: ReactNode;
+}) {
+  return (
+    <div className="mb-12 last:mb-0">
+      <h2 className="text-base-content mb-6 flex items-center gap-2 text-2xl leading-tight">
+        <Icon className="text-primary h-6 w-6" />
+        {title}
+      </h2>
+      {children}
+    </div>
+  );
+}
+
+function CardGrid({ cells, cols }: { cells: Cell[]; cols: string }) {
+  const visible = cells.filter((c) => c.assets.length > 0);
+  if (visible.length === 0) return null;
+  return (
+    <div className={`grid grid-cols-1 gap-6 sm:grid-cols-2 ${cols}`}>
+      {visible.map((c) => (
+        <div
+          key={c.name}
+          className="card border-base-300 bg-base-100 border p-6">
+          <div className="bg-primary/10 text-primary mb-3.5 flex h-11 w-11 items-center justify-center rounded-lg">
+            <c.icon className="h-6 w-6" />
+          </div>
+          <h3 className="text-base-content m-0 text-lg leading-tight">
+            {c.name}
+          </h3>
+          <p className="text-base-content/60 mt-1 line-clamp-2 text-sm">
+            {c.desc}
+          </p>
+          <div className="mt-4 flex flex-col gap-2">
+            {c.assets.map((a) => (
+              <a
+                key={a.href}
+                href={a.href}
+                className="btn btn-primary btn-sm gap-2">
+                <FaDownload className="h-3.5 w-3.5" />
+                {a.label}
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 const Downloads: FC = () => (
   <main>
@@ -57,36 +128,13 @@ const Downloads: FC = () => (
             <a href={RELEASE_PAGE} className="text-primary">
               latest release
             </a>
-            . Windows builds are not published — Servo&apos;s GTK dependencies
-            make them impractical.
+            .
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {PLATFORMS.map((p) => (
-            <div
-              key={p.name}
-              className="card border-base-300 bg-base-100 border p-6">
-              <div className="bg-primary/10 text-primary mb-3.5 flex h-11 w-11 items-center justify-center rounded-lg">
-                <p.icon className="h-6 w-6" />
-              </div>
-              <h2 className="text-base-content m-0 mb-1 text-lg leading-tight">
-                {p.name}
-              </h2>
-              <div className="mt-4 flex flex-col gap-2">
-                {p.assets.map((a) => (
-                  <a
-                    key={a.href}
-                    href={a.href}
-                    className="btn btn-primary btn-sm gap-2">
-                    <FaDownload className="h-3.5 w-3.5" />
-                    {a.label}
-                  </a>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        <Section icon={FaTerminal} title="CLI">
+          <CardGrid cells={CLI} cols="lg:grid-cols-4" />
+        </Section>
 
         <p className="text-base-content/60 mt-8 text-center text-sm">
           Or build from source:{' '}
