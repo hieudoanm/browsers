@@ -76,6 +76,7 @@ jobs:
         os:
           - ubuntu-latest
           - macos-latest
+          - macos-15-intel
     steps:
       - name: Checkout
         uses: actions/checkout@v7.0.1
@@ -119,6 +120,7 @@ jobs:
           case "${{ matrix.os }}" in
             ubuntu-latest) mv target/release/browserverless cli-browsers-x86_64-unknown-linux-gnu ;;
             macos-latest) mv target/release/browserverless cli-browsers-aarch64-apple-darwin ;;
+            macos-15-intel) mv target/release/browserverless cli-browsers-x86_64-apple-darwin ;;
           esac
 
       - name: Upload CLI binary
