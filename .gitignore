@@ -13,3 +13,4 @@ out/
 .DS_Store
 .env*.local
 .tracers-cache/
+.tracers/cache/
