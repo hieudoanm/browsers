@@ -7,8 +7,8 @@ order: 1
 # Browserverless documentation
 
 **browserverless** is a lightweight browser runtime built on the
-[Servo](https://servo.org/) engine, shipped as a single Rust binary. It does
-not wrap Chromium, WebKit, or Gecko — Servo owns the web platform (HTML, CSS,
+[Servo](https://servo.org/) engine, shipped as a single Rust binary. It does not
+wrap Chromium, WebKit, or Gecko — Servo owns the web platform (HTML, CSS,
 JavaScript) and this project is a thin embedder shell around it.
 
 ## What it does
@@ -22,8 +22,8 @@ JavaScript) and this project is a thin embedder shell around it.
 - **MCP server** — the same engine exposed to AI agents as
   `browserverless_scrape`, `browserverless_screenshot`, and
   `browserverless_version` tools over stdio JSON-RPC.
-- **Headed mode** — an interactive winit window when you need to watch the
-  page render.
+- **Headed mode** — an interactive winit window when you need to watch the page
+  render.
 
 ## Modes
 
@@ -42,17 +42,26 @@ JavaScript) and this project is a thin embedder shell around it.
 | `browsers-headless` | Offscreen rendering: load → wait → screenshot / HTML dump   |
 | `browsers-cli`      | clap CLI, HTTP server, and MCP server; bin `browserverless` |
 
-The remaining `browsers-*` crates under `crates/` (`-css`, `-dom`,
-`-gui`, `-html`, `-layout`, `-network`, `-paint`, `-renderer`, `-style`) are an
+The remaining `browsers-*` crates under `crates/` (`-css`, `-dom`, `-gui`,
+`-html`, `-layout`, `-network`, `-paint`, `-renderer`, `-style`) are an
 experimental pure-Rust engine kept for research. They are **not** workspace
 members and are not compiled — see the [roadmap](/docs/project/roadmap/).
 
 ## Documentation map
 
-- [Getting started](/docs/guide/getting-started/) — install, build, first screenshot
+- [Getting started](/docs/guide/getting-started/) — install, build, first
+  screenshot
 - [CLI reference](/docs/guide/cli/) — every subcommand and flag
 - [HTTP API](/docs/api/http-api/) — endpoints, headers, error codes
 - [MCP server](/docs/api/mcp/) — tools, transport, protocol rules
-- [Deployment](/docs/deployment/docker/) — Docker, AWS, Azure, GCP, Terraform, Heroku, Render
-- [Architecture](/docs/project/architecture/) — how Servo is embedded and the hard constraints
+- [Deployment](/docs/deployment/docker/) — Docker, AWS, Azure, GCP, Terraform,
+  Heroku, Render
+- [Architecture](/docs/project/architecture/) — how Servo is embedded and the
+  hard constraints
 - [Roadmap](/docs/project/roadmap/) — phase status and known limitations
+
+## Installation guides
+
+- [CLI on macOS (Apple Silicon)](/docs/guide/how-to-install-cli-macos-silicon/)
+- [CLI on macOS (Intel)](/docs/guide/how-to-install-cli-macos-intel/)
+- [CLI on Linux](/docs/guide/how-to-install-cli-linux/)
