@@ -8,7 +8,7 @@ members = [
 
 [workspace.dependencies]
 servo = "=0.8.0"
-clap = { version = "=4.6.9", features = ["derive", "string"] }
+clap = { version = "=4.6.10", features = ["derive", "string"] }
 thiserror = "=2.0.21"
 image = "=0.25.10"
 url = "=2.5.9"
